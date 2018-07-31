@@ -1,6 +1,6 @@
 # BurundangaStudio Nuxt Boilerplate
 
-[Demo](https://burundanga.studio/nuxt_boilerplate/en/)
+[Demo](http://burundanga.studio/nuxt_boilerplate/en/)
 
 ## Tech Overview
 - [NUXT.js](https://nuxtjs.org//): Nuxt.js is a framework for creating Universal Vue.js Applications. Its main scope is UI rendering while abstracting away the client/server distribution.
