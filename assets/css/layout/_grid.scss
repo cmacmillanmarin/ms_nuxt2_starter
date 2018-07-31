@@ -1,0 +1,89 @@
+//
+// assets/css/layout/_grid.scss
+
+.flexGrid {
+
+    display: flex;
+    flex-wrap: wrap;
+
+    &__cell {
+
+        &._1 {
+            width: 100%;
+        }
+        &._2 {
+            width: 50%;
+        }
+        &._3 {
+            width: 33.333333%;
+        }
+        &._4 {
+            width: 25%;
+        }
+        &._5 {
+            width: 20%;
+        }
+        &._6 {
+            width: 16.666666%;
+        }
+        &._7 {
+            width: 14.285714%;
+        }
+        &._8 {
+            width: 12.5%;
+        }
+        &._9 {
+            width: 11.111111%;
+        }
+        &._10 {
+            width: 10%;
+        }
+        &._11 {
+            width: 9.090909%;
+        }
+        &._12 {
+            width: 8.333333%;
+        }
+        &._alignLeft {
+            text-align: left;
+        }
+        &._alignRight {
+            text-align: right;
+        }
+        &._alignCenter {
+            text-align: center
+        }
+        &._end {
+            align-self: flex-end;
+        }
+    }
+
+    ._alignLeft {
+        justify-content: flex-start;
+    }
+
+    ._alignRight {
+        justify-content: flex-end;
+    }
+
+    ._alignCenter {
+        justify-content: center;
+    }
+
+    ._horizontal {
+        flex-direction: row;
+    }
+
+    ._horizontalReverse {
+        flex-direction: row-reverse;
+    }
+
+    ._vertical {
+        flex-direction: column;
+    }
+
+    ._verticalReverse {
+        flex-direction: column-reverse;
+    }
+}
+

@@ -1,0 +1,23 @@
+{
+    "es": "Castellano",
+    "back": "Atrás",
+
+    "p-index:name": "Home",
+    "p-about:name": "Conócenos",
+    "p-about:title": "Gente",
+    "p-about:profile:title": "Ver perfil",
+    "p-events:name": "Eventos",
+
+    "o-header:device": "Dispositivo",
+    "o-header:assets:logo:alt": "Descripción del logo en castellano",
+    "o-footer:visited-pages": "Páginas visitadas: ",
+    "o-footer:clear-history": "Limpiar historial",
+
+    "m-events:times": "vez/veces!",
+    "m-events:utils:description": "Eventos funcionando con utils/controller/Events.js",
+    "m-events:vuex:description": "Eventos funcionando con vuex: vuex/events.js",
+    "m-events:a:talks:b": "Hablar a B",
+    "m-events:b:talks:a": "Hablar a A",
+    "m-events:a:listen:b": "Hola A! Soy B, ya te he hablado ",
+    "m-events:b:listen:a": "Hola B! Soy A, ya te he hablado "
+}

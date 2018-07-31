@@ -1,0 +1,59 @@
+//
+// assets/css/layout/_breakpoints.scss
+
+$breakpoints: (
+    'mobile-extra-small': (min-width:  21.563em),       // 340
+    'mobile-portrait-only': (max-width:  29.9375em),    // 479
+    'mobile-landscape': (max-width:  51em),             // 816
+    'tablet-portrait': (min-width: 48em),               // 768
+    'tablet-portrait-only': (max-width: 48em),          // 768
+    'tablet-big': (min-width: 60.625em),                // 970
+    'desktop': (min-width: 64em),                       // 1024
+    'desktop-medium': (min-width: 80em),                // 1280
+    'desktop-large': (min-width: 90em),                 // 1440
+    'desktop-extra-large': (min-width: 120em)           // 1920
+);
+
+@mixin respond-to($name) {
+    @if map-has-key($breakpoints,
+    $name) {
+        @media #{inspect(map-get($breakpoints, $name))} {
+            @content;
+        }
+    }
+    @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. Please make sure it is defined in `$breakpoints` map.";
+    }
+}
+
+body {
+
+    &::after {
+        display: none;
+        content: 'mobile-portrait';
+
+        @include respond-to('mobile-landscape') {
+            content: 'mobile-landscape';
+        }
+
+        @include respond-to('tablet-portrait') {
+            content: 'tablet-portrait';
+        }
+
+        @include respond-to('tablet-big') {
+            content: 'tablet-big';
+        }
+
+        @include respond-to('desktop') {
+            content: 'desktop';
+        }
+
+        @include respond-to('desktop-medium') {
+            content: 'desktop-medium';
+        }
+
+        @include respond-to('desktop-large') {
+            content: 'desktop-large';
+        }
+    }
+}

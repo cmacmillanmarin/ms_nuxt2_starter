@@ -1,0 +1,23 @@
+<!--
+    App.html
+-->
+
+<!DOCTYPE html>
+<!--[if IE 9]><html lang="en-US" class="lt-ie9 ie9" {{ HTML_ATTRS }}><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html {{ HTML_ATTRS }}>
+<!--<![endif]-->
+
+    <head>
+        {{ HEAD }}
+        <% if(process.env.NODE_ENV == 'dev'){ %>
+            <base href="/">
+        <% }else{ %>
+            <base href="/folder/">
+        <% } %>
+    </head>
+    <body {{ BODY_ATTRS }}>
+        {{ APP }}
+    </body>
+
+</html>

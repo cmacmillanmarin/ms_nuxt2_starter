@@ -1,0 +1,58 @@
+//
+// assets/css/abstracts/_mixins.scss
+
+@mixin importFont($fontname, $filename, $svgLabel, $isBold: false, $isItalic: false) {
+    @font-face {
+        font-family: $fontname; // IE9 Compat Modes
+        src: url('~/static/fonts/#{$filename}.eot'); // IE6-IE8
+        src: url('~/static/fonts/#{$filename}.eot?#iefix') format('embedded-opentype'), // Modern Browsers
+        url('~/static/fonts/#{$filename}.woff') format('woff'), // Safari, Android, iOS
+        url('~/static/fonts/#{$filename}.ttf') format('truetype'), // Legacy iOS
+        url('~/static/fonts/#{$filename}.svg##{$svgLabel}') format('svg');
+        @if $isBold {
+            font-weight: bold;
+        }
+        @else {
+            font-weight: normal;
+        }
+        @if $isItalic {
+            font-style: italic;
+        }
+        @else {
+            font-style: normal;
+        }
+    }
+}
+
+@mixin transform($transforms) {
+    transform: $transforms;
+}
+
+@mixin borderRadius($border-radiuss) {
+    -moz-border-radius: $border-radiuss;
+    -o-border-radius: $border-radiuss;
+    -ms-border-radius: $border-radiuss;
+    -webkit-border-radius: $border-radiuss;
+    border-radius: $border-radiuss;
+}
+
+@mixin centerX() {
+    left: 50%;
+    @include transform(translateX(-50%));
+}
+
+@mixin centerY() {
+    top: 50%;
+    @include transform(translateY(-50%));
+}
+
+@mixin centerXY() {
+    left: 50%;
+    top: 50%;
+    @include transform(translate(-50%,
+    -50%));
+}
+
+@mixin inputBorder() {
+    border: 1px solid $light_grey;
+}

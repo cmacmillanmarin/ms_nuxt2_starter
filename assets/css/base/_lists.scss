@@ -1,0 +1,32 @@
+//
+// assets/css/layout/_lists.scss
+
+/**
+ * Ordered/Unordered list base styles
+ */
+ol, ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+/**
+ * Definition list base styles
+ */
+dl {
+	overflow: hidden;
+}
+
+/**
+ * Terms/Names base styles
+ */
+dt {
+	font-weight: bold;
+}
+
+/**
+ * Definition list description base styles
+ */
+dd {
+	margin-left: 0;
+}
