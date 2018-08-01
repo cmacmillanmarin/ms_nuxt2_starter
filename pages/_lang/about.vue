@@ -1,5 +1,5 @@
 <!--
-    pages/_lang/b-reelers.vue
+    pages/_lang/about.vue
 -->
 
 <template>

@@ -1,9 +1,9 @@
 <!--
-    pages/_lang/b-reeler.vue
+    pages/_lang/person.vue
 -->
 
 <template>
-    <div class="p-bReeler pageLayout">
+    <div class="p-person pageLayout">
         <p class="name" v-text="worker.name" />
     </div>
 </template>
@@ -13,7 +13,7 @@
     import Transitions from "~/mixins/Transitions";
 
     export default {
-        name: "bReeler",
+        name: "person",
         mixins: [ Transitions ],
         head () {
             return {
@@ -36,7 +36,7 @@
 
 <style lang="scss" scoped>
 
-    .p-bReeler {
+    .p-person {
         padding: 55px;
         img {
             width: 150px;
