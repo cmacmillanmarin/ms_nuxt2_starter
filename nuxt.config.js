@@ -49,6 +49,7 @@ module.exports = {
 
     modules: [
         "nuxt-sass-resources-loader",
+        "~/modules/scraper",
         "@nuxtjs/axios",
     ],
 

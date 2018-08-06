@@ -25,8 +25,8 @@
             }
         },
         async asyncData ({ app, params, error }) {
-            const req = await app.$axios.$get("https://www.jsonstore.io/91a0754e7f37cc115ba33deb007d13276d6c1f8f309e44f084d4278c51c5fe08/people");
-            const team = req.result;
+            const req = require("~/static/data/people/all.json");
+            const team = req.content;
             if (!team) return error({ statusCode: 404 });
             return {
                 team

@@ -22,9 +22,8 @@
         },
         async asyncData ({ app, params, error, payload }) {
             if (payload) return { worker: payload };
-            const id = params.id;
-            const req = await app.$axios.$get(`https://www.jsonstore.io/91a0754e7f37cc115ba33deb007d13276d6c1f8f309e44f084d4278c51c5fe08/people/${id}`);
-            const worker = req.result;
+            const req = require(`~/static/data/people/${params.id}.json`);
+            const worker = req.content;
             if (!worker) return error({ statusCode: 404 });
             return {
                 worker
