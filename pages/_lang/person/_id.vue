@@ -36,20 +36,11 @@
 <style lang="scss" scoped>
 
     .p-person {
-        padding: 55px;
-        img {
-            width: 150px;
-            height: 150px;
-            margin-bottom: 20px;
-            object-fit: cover;
-            border-radius: 50%;
-        }
+        padding: 58px;
         .name {
             font-weight: bold;
             font-size: 20px;
-        }
-        .role {
-            padding-bottom: 5px;
+            line-height: 25px;
         }
     }
 

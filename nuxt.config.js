@@ -113,13 +113,12 @@ module.exports = {
             if (!manifest.dynamicRoutes || manifest.dynamicRoutes.length === 0) callback(null, routes);
             else {
                 manifest.dynamicRoutes.forEach((dynamicRoute, numCall) => {
-                    axios.get(dynamicRoute.url).then((res) => {
-                        Array.from(res.data.result).forEach((child, key) => {
-                            manifest.langs.forEach(lang => {
-                                routes.push({
-                                    route: `${lang}/${dynamicRoute.path}/${key}`,
-                                    payload: child
-                                });
+                    const data = require(dynamicRoute.file);
+                    Array.from(data.content).forEach((child, key) => {
+                        manifest.langs.forEach(lang => {
+                            routes.push({
+                                route: `${lang}/${dynamicRoute.route}/${key}`,
+                                payload: child
                             });
                         });
                         if (numCall === manifest.dynamicRoutes.length - 1) callback(null, routes);

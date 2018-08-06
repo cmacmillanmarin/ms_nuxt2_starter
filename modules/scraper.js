@@ -29,11 +29,12 @@ module.exports = function scraper() {
             const path = `static/data/${staticData.path}`;
             const req = await axios.get(`${staticData.call}`);
             if (!fs.pathExistsSync(path)) fs.emptyDir(path);
+            console.log(`${path}/${staticData.name}.json`);
             scraper.push(writeData(`${path}/${staticData.name}.json`, { content: req.data.result }));
         }
 
         return Promise.all(scraper).then(() => { console.log('JSON Build Complete!') });
     }
-
-    getData();
+    if (process.env.NODE_ENV === 'dev') getData();
+    this.nuxt.hook("generate:before", getData);
 }
