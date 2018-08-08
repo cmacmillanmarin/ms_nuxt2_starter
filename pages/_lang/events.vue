@@ -12,7 +12,7 @@
 
 <script>
 
-
+    import Head from "~/mixins/Head";
     import Transitions from "~/mixins/Transitions";
 
     import MoleculeEvents from "~/components/molecules/Events";
@@ -21,10 +21,15 @@
     export default {
         name: "events",
         layout: "event",
-        mixins: [ Transitions ],
-        head () {
+        mixins: [ Head, Transitions ],
+        data() {
             return {
-                title: `BurundangaStudio NUXT | ${this.$t('p-events:name')}`
+                head: {
+                    title: this.$t('p-events:title'),
+                    meta: {
+                        description: this.$t('p-events:description')
+                    }
+                }
             }
         },
         components: {

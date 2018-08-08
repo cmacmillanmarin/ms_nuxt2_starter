@@ -4,7 +4,6 @@
 
 <template>
     <div class="p-about pageLayout">
-        <p class="title" v-text="$t('p-about:title')" />
         <div class="person" v-for="(person, key) in team" :key="key" v-if="person">
             <span v-text="person.name" /> ->
             <nuxt-link :to="{ name: 'lang-person-id', params: { id: key } }" v-text="$t('p-about:profile:title')" />
@@ -14,16 +13,12 @@
 
 <script>
 
+    import Head from "~/mixins/Head";
     import Transitions from "~/mixins/Transitions";
 
     export default {
         name: "about",
-        mixins: [ Transitions ],
-        head () {
-            return {
-                title: `BurundangaStudio NUXT | ${this.$t('p-about:name')}`
-            }
-        },
+        mixins: [ Head, Transitions ],
         async asyncData ({ app, params, error }) {
             const req = require("~/static/data/people/all.json");
             const team = req.content;
@@ -31,6 +26,16 @@
             return {
                 team
             };
+        },
+        data() {
+            return {
+                head: {
+                    title: this.$t('p-about:title'),
+                    meta: {
+                        description: this.$t('p-about:description')
+                    }
+                }
+            }
         }
     }
 

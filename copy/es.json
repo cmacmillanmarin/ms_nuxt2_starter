@@ -3,10 +3,15 @@
     "back": "Atrás",
 
     "p-index:name": "Home",
+    "p-index:title": "Título Home",
+    "p-index:description": "Descripción SEO Home.",
     "p-about:name": "Conócenos",
-    "p-about:title": "Gente",
+    "p-about:title": "Título Sobre Nosotros",
+    "p-about:description": "Descripción SEO Sobre Nosotros.",
     "p-about:profile:title": "Ver perfil",
     "p-events:name": "Eventos",
+    "p-events:title": "Título Eventos",
+    "p-events:description": "Descripción SEO Eventos.",
 
     "o-header:device": "Dispositivo",
     "o-header:assets:logo:alt": "Descripción del logo en castellano",

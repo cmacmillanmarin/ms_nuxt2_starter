@@ -71,27 +71,28 @@
 
     .o-header {
 
-        border-bottom: 1px solid $lightGrey;
+        border-bottom: 1px solid;
+        border-color: lime;
         padding: 20px;
 
         @include respond-to("mobile-landscape") {
-            background: $lightGrey;
+            border-color: $lightGrey;
         }
 
         @include respond-to("tablet-portrait") {
-            background: white;
+            border-color: lime;
         }
 
         @include respond-to("desktop") {
-            background: $lightGrey;
+            border-color: $lightGrey;
         }
 
         @include respond-to("desktop-medium") {
-            background: white;
+            border-color: lime;
         }
 
         @include respond-to("desktop-large") {
-            background: $lightGrey;
+            border-color: $lightGrey;
         }
 
         .m-list {

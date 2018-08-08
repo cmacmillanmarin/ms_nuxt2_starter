@@ -12,20 +12,26 @@
 
     import { mapState } from "vuex";
 
+    import Head from "~/mixins/Head";
     import LifecycleHooks from "~/mixins/LifecycleHooks";
 
     export default {
         name: "index",
-        mixins: [ LifecycleHooks ],
-        head () {
-            return {
-                title: `BurundangaStudio NUXT | ${this.$t(this.lang)}`
-            }
-        },
+        mixins: [ Head, LifecycleHooks ],
         computed: {
             ...mapState({
                 lang: state => state.lang.locale
             })
+        },
+        data() {
+            return {
+                head: {
+                    title: this.$t('p-index:title'),
+                    meta: {
+                        description: this.$t('p-index:description')
+                    }
+                }
+            }
         },
         methods: {
             setInitValue() {

@@ -5,41 +5,6 @@ const axios = require("axios");
 const manifest = require("./config/manifest");
 
 module.exports = {
-    head: {
-        title: "BurundangaStudio Nuxt Boilerplate",
-        meta: [{
-                charset: "utf-8"
-            },
-            {
-                name: "viewport",
-                content: "width=device-width, initial-scale=1"
-            },
-            {
-                hid: "BurundangaStudio",
-                name: "BurundangaStudio",
-                content: "BurundangaStudio Nuxt Boilerplate"
-            },
-        ],
-        bodyAttrs: {
-            class: "__body"
-        },
-        script: [
-            // Preload JS files
-            {
-                src: ""
-            }
-        ],
-        link: [
-            // Preload CSS, Favicon, etc...
-            {
-                rel: "icon",
-                type: "image/x-icon",
-                href: "/favicon.ico"
-            },
-            // { rel: "stylesheet", href: "" }
-        ]
-    },
-
     router: {
         base: process.env.NODE_ENV === "dev" ? "/" : "/nuxt_boilerplate/",
         middleware: "i18n"
