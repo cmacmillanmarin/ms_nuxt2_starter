@@ -22,12 +22,12 @@
         name: "events",
         layout: "event",
         mixins: [ Head, Transitions ],
-        data() {
+        async asyncData({ app }) {
             return {
                 head: {
-                    title: this.$t('p-events:title'),
+                    title: app.i18n.t('p-events:title'),
                     meta: {
-                        description: this.$t('p-events:description')
+                        description: app.i18n.t('p-events:description')
                     }
                 }
             }

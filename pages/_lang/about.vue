@@ -19,24 +19,20 @@
     export default {
         name: "about",
         mixins: [ Head, Transitions ],
-        async asyncData ({ app, params, error }) {
+        async asyncData ({ app, error }) {
             const req = require("~/static/data/people/all.json");
             const team = req.content;
             if (!team) return error({ statusCode: 404 });
             return {
-                team
-            };
-        },
-        data() {
-            return {
+                team,
                 head: {
-                    title: this.$t('p-about:title'),
+                    title: app.i18n.t('p-about:title'),
                     meta: {
-                        description: this.$t('p-about:description')
+                        description: app.i18n.t('p-about:description')
                     }
                 }
-            }
-        }
+            };
+        },
     }
 
 </script>

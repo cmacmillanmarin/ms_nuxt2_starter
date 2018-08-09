@@ -23,12 +23,12 @@
                 lang: state => state.lang.locale
             })
         },
-        data() {
+        async asyncData({ app }) {
             return {
                 head: {
-                    title: this.$t('p-index:title'),
+                    title: app.i18n.t('p-index:title'),
                     meta: {
-                        description: this.$t('p-index:description')
+                        description: app.i18n.t('p-index:description')
                     }
                 }
             }
