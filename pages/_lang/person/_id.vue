@@ -4,7 +4,7 @@
 
 <template>
     <div class="p-person pageLayout">
-        <p class="name" v-text="worker.name" />
+        <p class="name" v-text="player.name" />
     </div>
 </template>
 
@@ -17,14 +17,17 @@
         name: "person",
         mixins: [ Head, Transitions ],
         async asyncData ({ app, params, error, payload }) {
-            if (payload) return { worker: payload };
-            const req = require(`~/static/data/people/${params.id}.json`);
-            const worker = req.content;
-            if (!worker) return error({ statusCode: 404 });
+            let player;
+            if (payload) player = payload;
+            else {
+                const req = require(`~/static/data/people/${params.id}.json`);
+                player = req.content;
+            }
+            if (!player) return error({ statusCode: 404 });
             return {
-                worker,
+                player,
                 head: {
-                    title: worker.name,
+                    title: player.name,
                     meta: {
                         description: app.i18n.t('p-about:description')
                     }
