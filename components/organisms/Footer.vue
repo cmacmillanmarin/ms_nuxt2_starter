@@ -52,6 +52,8 @@
 
 <style lang="scss" scoped>
 
+    @import "~assets/css/abs";
+
     .o-footer {
         padding: 20px 20px 50px;
         border-top: 1px solid $lightGrey;

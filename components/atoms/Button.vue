@@ -31,6 +31,8 @@
 
 <style lang="scss" scoped>
 
+    @import "~assets/css/abs";
+
     .a-button {
         background: none;
         @include respond-to("mobile-landscape") {

@@ -1,11 +1,9 @@
 //
 // assets/css/style.scss
 
-@import "./abstracts/mixins";
-@import "./abstracts/variables";
+@import "./abs";
 
 @import "./base/body";
-@import "./base/breakpoints";
 @import "./base/fonts";
 @import "./base/forms";
 @import "./base/links";

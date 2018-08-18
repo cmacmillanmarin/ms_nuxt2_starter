@@ -13,14 +13,11 @@ module.exports = {
     loading: false,
 
     modules: [
-        "nuxt-sass-resources-loader",
         "~/modules/scraper",
         "@nuxtjs/axios",
     ],
 
-    sassResources: ["@/assets/css/style.scss"],
-
-    css: ["~/assets/css/style.scss"],
+    css: ["@/assets/css/style.scss"],
 
     postcss: [
         require("autoprefixer")({
@@ -49,7 +46,8 @@ module.exports = {
             "lodash",
             "gsap",
             "babel-polyfill",
-            "~/plugins/Polyfills.js"
+            "~/plugins/Polyfills.js",
+            "~/assets/css/_abs.scss"
         ],
         extend(config, {
             isDev,

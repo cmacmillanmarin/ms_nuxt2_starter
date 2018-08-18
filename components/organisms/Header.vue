@@ -69,6 +69,8 @@
 
 <style lang="scss" scoped>
 
+    @import "~assets/css/abs";
+
     .o-header {
 
         border-bottom: 1px solid;

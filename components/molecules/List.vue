@@ -41,6 +41,8 @@
 
 <style lang="scss" scoped>
 
+    @import "~assets/css/abs";
+
     .m-list {
         .item {
             display: inline-block;
