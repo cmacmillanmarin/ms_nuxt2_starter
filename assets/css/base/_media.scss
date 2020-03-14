@@ -10,7 +10,7 @@
     &.r4x5 {
         @include  aspect-ratio(4, 5);
     }
-    &.r16x9, &.r839x472 { // hack newsletter img please remove harcode 839x472 ratio
+    &.r16x9 {
         @include  aspect-ratio(16, 9);
     }
     &.r9x16 {
@@ -33,9 +33,6 @@
     }
     &.r3x4 {
         @include  aspect-ratio(3, 4);
-    }
-    &.r18x5 {
-        @include  aspect-ratio(18, 5);
     }
 }
 
