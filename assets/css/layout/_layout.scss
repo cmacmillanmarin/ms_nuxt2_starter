@@ -4,13 +4,12 @@ s
 #__nuxt, #__layout {
     width: 100%;
     height: 100%;
-    // overflow-x: hidden;
 }
 
 .inViewLayout {
     position: relative;
-    @include media-breakpoint-up("desktop-view") {
-        padding: 0px calc((100vw - #{$maxViewSize}) * 0.5);
+    @include media-breakpoint-up("desktop-xl") {
+        padding: 0px calc((100vw - 1681px) * 0.5);
     }
 }
 
@@ -19,25 +18,28 @@ s
     @include media-breakpoint-up("tablet") {
         padding: 0px inGridLayout(tablet);
     }
-    @include media-breakpoint-up("desktop") {
-        padding: 0px inGridLayout(desktop);
+    @include media-breakpoint-up("desktop-s") {
+        padding: 0px inGridLayout(desktop-s);
     }
-    @include media-breakpoint-up("desktop-large") {
-        padding: 0px inGridLayout(desktop-large);
+    @include media-breakpoint-up("desktop-m") {
+        padding: 0px inGridLayout(desktop-m);
+    }
+    @include media-breakpoint-up("desktop-l") {
+        padding: 0px inGridLayout(desktop-l);
     }
 }
 
 .no-wrap-grid {
     white-space: nowrap;
-    margin-left: -$mobileGridGap;
-    margin-right: -$mobileGridGap;
+    margin-left: -$mobile_gridgap;
+    margin-right: -$mobile_gridgap;
     @include media-breakpoint-up("tablet") {
-        margin-left: -$tabletGridGap;
-        margin-right: -$tabletGridGap;
+        margin-left: -$tablet_gridgap;
+        margin-right: -$tablet_gridgap;
     }
-    @include media-breakpoint-up("desktop") {
-        margin-left: -$desktopGridGap;
-        margin-right: -$desktopGridGap;
+    @include media-breakpoint-up("desktop-s") {
+        margin-left: -$desktop_gridgap;
+        margin-right: -$desktop_gridgap;
     }
     > * {
         display: inline-block;
@@ -48,15 +50,15 @@ s
 .grid {
     display: flex;
     flex-wrap: wrap;
-    margin-left: -$mobileGridGap;
-    margin-right: -$mobileGridGap;
+    margin-left: -$mobile_gridgap;
+    margin-right: -$mobile_gridgap;
     @include media-breakpoint-up("tablet") {
-        margin-left: -$tabletGridGap;
-        margin-right: -$tabletGridGap;
+        margin-left: -$tablet_gridgap;
+        margin-right: -$tablet_gridgap;
     }
-    @include media-breakpoint-up("desktop") {
-        margin-left: -$desktopGridGap;
-        margin-right: -$desktopGridGap;
+    @include media-breakpoint-up("desktop-s") {
+        margin-left: -$desktop_gridgap;
+        margin-right: -$desktop_gridgap;
     }
     &.centered {
         justify-content: center;
@@ -75,132 +77,132 @@ s
 .col- {
     &1 {
         width: 8.333333%;
-        padding: 0 $mobileGridGap;
+        padding: 0 $mobile_gridgap;
         @include media-breakpoint-up("tablet") {
-            padding: 0 $tabletGridGap;
+            padding: 0 $tablet_gridgap;
         }
-        @include media-breakpoint-up("desktop") {
-            padding: 0 $desktopGridGap;
+        @include media-breakpoint-up("desktop-s") {
+            padding: 0 $desktop_gridgap;
         }
     }
     &1-2 {
         width: 12.5%;
-        padding: 0 $mobileGridGap;
+        padding: 0 $mobile_gridgap;
         @include media-breakpoint-up("tablet") {
-            padding: 0 $tabletGridGap;
+            padding: 0 $tablet_gridgap;
         }
-        @include media-breakpoint-up("desktop") {
-            padding: 0 $desktopGridGap;
+        @include media-breakpoint-up("desktop-s") {
+            padding: 0 $desktop_gridgap;
         }
     }
     &2 {
         width: 16.666666%;
-        padding: 0 $mobileGridGap;
+        padding: 0 $mobile_gridgap;
         @include media-breakpoint-up("tablet") {
-            padding: 0 $tabletGridGap;
+            padding: 0 $tablet_gridgap;
         }
-        @include media-breakpoint-up("desktop") {
-            padding: 0 $desktopGridGap;
+        @include media-breakpoint-up("desktop-s") {
+            padding: 0 $desktop_gridgap;
         }
     }
     &3 {
         width: 25%;
-        padding: 0 $mobileGridGap;
+        padding: 0 $mobile_gridgap;
         @include media-breakpoint-up("tablet") {
-            padding: 0 $tabletGridGap;
+            padding: 0 $tablet_gridgap;
         }
-        @include media-breakpoint-up("desktop") {
-            padding: 0 $desktopGridGap;
+        @include media-breakpoint-up("desktop-s") {
+            padding: 0 $desktop_gridgap;
         }
     }
     &4 {
         width: 33.333333%;
-        padding: 0 $mobileGridGap;
+        padding: 0 $mobile_gridgap;
         @include media-breakpoint-up("tablet") {
-            padding: 0 $tabletGridGap;
+            padding: 0 $tablet_gridgap;
         }
-        @include media-breakpoint-up("desktop") {
-            padding: 0 $desktopGridGap;
+        @include media-breakpoint-up("desktop-s") {
+            padding: 0 $desktop_gridgap;
         }
     }
     &5 {
         width: 41.666666%;
-        padding: 0 $mobileGridGap;
+        padding: 0 $mobile_gridgap;
         @include media-breakpoint-up("tablet") {
-            padding: 0 $tabletGridGap;
+            padding: 0 $tablet_gridgap;
         }
-        @include media-breakpoint-up("desktop") {
-            padding: 0 $desktopGridGap;
+        @include media-breakpoint-up("desktop-s") {
+            padding: 0 $desktop_gridgap;
         }
     }
     &6 {
         width: 50%;
-        padding: 0 $mobileGridGap;
+        padding: 0 $mobile_gridgap;
         @include media-breakpoint-up("tablet") {
-            padding: 0 $tabletGridGap;
+            padding: 0 $tablet_gridgap;
         }
-        @include media-breakpoint-up("desktop") {
-            padding: 0 $desktopGridGap;
+        @include media-breakpoint-up("desktop-s") {
+            padding: 0 $desktop_gridgap;
         }
     }
     &7 {
         width: 58.333333%;
-        padding: 0 $mobileGridGap;
+        padding: 0 $mobile_gridgap;
         @include media-breakpoint-up("tablet") {
-            padding: 0 $tabletGridGap;
+            padding: 0 $tablet_gridgap;
         }
-        @include media-breakpoint-up("desktop") {
-            padding: 0 $desktopGridGap;
+        @include media-breakpoint-up("desktop-s") {
+            padding: 0 $desktop_gridgap;
         }
     }
     &8 {
         width: 66.666666%;
-        padding: 0 $mobileGridGap;
+        padding: 0 $mobile_gridgap;
         @include media-breakpoint-up("tablet") {
-            padding: 0 $tabletGridGap;
+            padding: 0 $tablet_gridgap;
         }
-        @include media-breakpoint-up("desktop") {
-            padding: 0 $desktopGridGap;
+        @include media-breakpoint-up("desktop-s") {
+            padding: 0 $desktop_gridgap;
         }
     }
     &9 {
         width: 75%;
-        padding: 0 $mobileGridGap;
+        padding: 0 $mobile_gridgap;
         @include media-breakpoint-up("tablet") {
-            padding: 0 $tabletGridGap;
+            padding: 0 $tablet_gridgap;
         }
-        @include media-breakpoint-up("desktop") {
-            padding: 0 $desktopGridGap;
+        @include media-breakpoint-up("desktop-s") {
+            padding: 0 $desktop_gridgap;
         }
     }
     &10 {
         width: 83.333333%;
-        padding: 0 $mobileGridGap;
+        padding: 0 $mobile_gridgap;
         @include media-breakpoint-up("tablet") {
-            padding: 0 $tabletGridGap;
+            padding: 0 $tablet_gridgap;
         }
-        @include media-breakpoint-up("desktop") {
-            padding: 0 $desktopGridGap;
+        @include media-breakpoint-up("desktop-s") {
+            padding: 0 $desktop_gridgap;
         }
     }
     &11 {
         width: 91.666666%;
-        padding: 0 $mobileGridGap;
+        padding: 0 $mobile_gridgap;
         @include media-breakpoint-up("tablet") {
-            padding: 0 $tabletGridGap;
+            padding: 0 $tablet_gridgap;
         }
-        @include media-breakpoint-up("desktop") {
-            padding: 0 $desktopGridGap;
+        @include media-breakpoint-up("desktop-s") {
+            padding: 0 $desktop_gridgap;
         }
     }
     &12 {
         width: 100%;
-        padding: 0 $mobileGridGap;
+        padding: 0 $mobile_gridgap;
         @include media-breakpoint-up("tablet") {
-            padding: 0 $tabletGridGap;
+            padding: 0 $tablet_gridgap;
         }
-        @include media-breakpoint-up("desktop") {
-            padding: 0 $desktopGridGap;
+        @include media-breakpoint-up("desktop-s") {
+            padding: 0 $desktop_gridgap;
         }
     }
 }

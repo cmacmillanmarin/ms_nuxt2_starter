@@ -71,7 +71,6 @@
     position: relative;
     &:before {
         display: block;
-        background: $lightGrey;
         content: "";
         width: 100%;
         padding-top: floor(($height / $width) * 100%);

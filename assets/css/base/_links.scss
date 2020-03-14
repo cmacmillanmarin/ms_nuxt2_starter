@@ -2,14 +2,14 @@
 // assets/css/layout/_links.scss
 
 a {
-    color: $black;
+    color: black;
 	text-decoration: none;
 	outline: 0;
 
 	&:hover {
-		color: $black;
+		color: black;
 	}
 	&:focus {
-		outline: 1px solid $chny;
+		outline: 1px solid blue;
 	}
 }

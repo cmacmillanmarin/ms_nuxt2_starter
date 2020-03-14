@@ -27,11 +27,11 @@ export default {
             outline: none;
         }
         &:focus {
-            outline: 1px solid $chny;
+            outline: 1px solid blue;
         }
         &.border:focus {
             outline: none;
-            border: 1px solid $chny !important;
+            border: 1px solid blue !important;
         }
     }
 </style>
