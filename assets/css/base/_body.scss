@@ -2,7 +2,48 @@
 // assets/css/layout/_body.scss
 
 body {
-    font-family: $fontFamily;
     margin: 0px;
     padding: 0px;
+    font-weight: 300;
+    background: $white;
+    overscroll-behavior:none;
+    // overflow-x: hidden;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.page {
+    width: 100%;
+    opacity: 0;
+    will-change: opacity;
+    overflow-x: hidden;
+}
+
+.divider- {
+    &top {
+        &:before {
+            content: "";
+            width: calc(100% - 30px);
+            margin: 0 auto;
+            border-top: 1px solid $paleGrey;
+            @include media-breakpoint-up("tablet") {
+                width: calc(100% - #{$desktopGridGap * 2});
+            }
+        }
+    }
+    &bottom {
+        &:after {
+            content: "";
+            width: calc(100% - 20px - #{$mobileGridGap * 2});
+            margin: 0 auto;
+            border-bottom: 1px solid $paleGrey;
+            @include media-breakpoint-up("tablet") {
+                width: calc(100% - #{$desktopGridGap * 2});
+            }
+        }
+    }
 }

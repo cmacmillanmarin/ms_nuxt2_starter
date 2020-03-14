@@ -1,0 +1,46 @@
+//
+// assets/css/layout/_breakpoints.scss
+
+@import "../abstracts/variables";
+
+
+$grid-breakpoints: (
+    mobile-portrait: 0,
+    mobile-landscape: 576px,
+    tablet: 768px,
+    desktop: 992px,
+    desktop-large: 1201px,
+    desktop-extra-large: $maxGridSize,
+    desktop-view: $maxViewSize
+);
+
+body {
+    &::after {
+        display: none;
+        content: 'mobile-portrait';
+
+        @include media-breakpoint-up('mobile-landscape') {
+            content: 'mobile-landscape';
+        }
+
+        @include media-breakpoint-up('tablet') {
+            content: 'tablet';
+        }
+
+        @include media-breakpoint-up('desktop') {
+            content: 'desktop';
+        }
+
+        @include media-breakpoint-up('desktop-large') {
+            content: 'desktop-large';
+        }
+
+        @include media-breakpoint-up('desktop-extra-large') {
+            content: 'desktop-extra-large';
+        }
+
+        @include media-breakpoint-up('desktop-view') {
+            content: 'desktop-view';
+        }
+    }
+}

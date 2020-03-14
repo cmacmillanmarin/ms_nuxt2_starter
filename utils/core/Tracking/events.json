@@ -1,9 +1,0 @@
-{
-  "EXAMPLE_EVENT": {
-    "name": "event name",
-    "description": "event description",
-    "category": "event category",
-    "action": "click",
-    "label": "event label"
-  }
-}

@@ -1,7 +1,207 @@
 //
 // assets/css/layout/_layout.scss
-
-.pageLayout {
-    padding: 100px 20px;
-    text-align: center;
+s
+#__nuxt, #__layout {
+    width: 100%;
+    height: 100%;
+    // overflow-x: hidden;
 }
+
+.inViewLayout {
+    position: relative;
+    @include media-breakpoint-up("desktop-view") {
+        padding: 0px calc((100vw - #{$maxViewSize}) * 0.5);
+    }
+}
+
+.inGridLayout {
+    position: relative;
+    @include media-breakpoint-up("tablet") {
+        padding: 0px inGridLayout(tablet);
+    }
+    @include media-breakpoint-up("desktop") {
+        padding: 0px inGridLayout(desktop);
+    }
+    @include media-breakpoint-up("desktop-large") {
+        padding: 0px inGridLayout(desktop-large);
+    }
+}
+
+.no-wrap-grid {
+    white-space: nowrap;
+    margin-left: -$mobileGridGap;
+    margin-right: -$mobileGridGap;
+    @include media-breakpoint-up("tablet") {
+        margin-left: -$tabletGridGap;
+        margin-right: -$tabletGridGap;
+    }
+    @include media-breakpoint-up("desktop") {
+        margin-left: -$desktopGridGap;
+        margin-right: -$desktopGridGap;
+    }
+    > * {
+        display: inline-block;
+        vertical-align: top;
+    }
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -$mobileGridGap;
+    margin-right: -$mobileGridGap;
+    @include media-breakpoint-up("tablet") {
+        margin-left: -$tabletGridGap;
+        margin-right: -$tabletGridGap;
+    }
+    @include media-breakpoint-up("desktop") {
+        margin-left: -$desktopGridGap;
+        margin-right: -$desktopGridGap;
+    }
+    &.centered {
+        justify-content: center;
+    }
+    &.align-bottom {
+        align-items: flex-end;
+    }
+    &.align-center {
+        align-items: center;
+    }
+    &.align-top {
+        align-items: flex-start;
+    }
+}
+
+.col- {
+    &1 {
+        width: 8.333333%;
+        padding: 0 $mobileGridGap;
+        @include media-breakpoint-up("tablet") {
+            padding: 0 $tabletGridGap;
+        }
+        @include media-breakpoint-up("desktop") {
+            padding: 0 $desktopGridGap;
+        }
+    }
+    &1-2 {
+        width: 12.5%;
+        padding: 0 $mobileGridGap;
+        @include media-breakpoint-up("tablet") {
+            padding: 0 $tabletGridGap;
+        }
+        @include media-breakpoint-up("desktop") {
+            padding: 0 $desktopGridGap;
+        }
+    }
+    &2 {
+        width: 16.666666%;
+        padding: 0 $mobileGridGap;
+        @include media-breakpoint-up("tablet") {
+            padding: 0 $tabletGridGap;
+        }
+        @include media-breakpoint-up("desktop") {
+            padding: 0 $desktopGridGap;
+        }
+    }
+    &3 {
+        width: 25%;
+        padding: 0 $mobileGridGap;
+        @include media-breakpoint-up("tablet") {
+            padding: 0 $tabletGridGap;
+        }
+        @include media-breakpoint-up("desktop") {
+            padding: 0 $desktopGridGap;
+        }
+    }
+    &4 {
+        width: 33.333333%;
+        padding: 0 $mobileGridGap;
+        @include media-breakpoint-up("tablet") {
+            padding: 0 $tabletGridGap;
+        }
+        @include media-breakpoint-up("desktop") {
+            padding: 0 $desktopGridGap;
+        }
+    }
+    &5 {
+        width: 41.666666%;
+        padding: 0 $mobileGridGap;
+        @include media-breakpoint-up("tablet") {
+            padding: 0 $tabletGridGap;
+        }
+        @include media-breakpoint-up("desktop") {
+            padding: 0 $desktopGridGap;
+        }
+    }
+    &6 {
+        width: 50%;
+        padding: 0 $mobileGridGap;
+        @include media-breakpoint-up("tablet") {
+            padding: 0 $tabletGridGap;
+        }
+        @include media-breakpoint-up("desktop") {
+            padding: 0 $desktopGridGap;
+        }
+    }
+    &7 {
+        width: 58.333333%;
+        padding: 0 $mobileGridGap;
+        @include media-breakpoint-up("tablet") {
+            padding: 0 $tabletGridGap;
+        }
+        @include media-breakpoint-up("desktop") {
+            padding: 0 $desktopGridGap;
+        }
+    }
+    &8 {
+        width: 66.666666%;
+        padding: 0 $mobileGridGap;
+        @include media-breakpoint-up("tablet") {
+            padding: 0 $tabletGridGap;
+        }
+        @include media-breakpoint-up("desktop") {
+            padding: 0 $desktopGridGap;
+        }
+    }
+    &9 {
+        width: 75%;
+        padding: 0 $mobileGridGap;
+        @include media-breakpoint-up("tablet") {
+            padding: 0 $tabletGridGap;
+        }
+        @include media-breakpoint-up("desktop") {
+            padding: 0 $desktopGridGap;
+        }
+    }
+    &10 {
+        width: 83.333333%;
+        padding: 0 $mobileGridGap;
+        @include media-breakpoint-up("tablet") {
+            padding: 0 $tabletGridGap;
+        }
+        @include media-breakpoint-up("desktop") {
+            padding: 0 $desktopGridGap;
+        }
+    }
+    &11 {
+        width: 91.666666%;
+        padding: 0 $mobileGridGap;
+        @include media-breakpoint-up("tablet") {
+            padding: 0 $tabletGridGap;
+        }
+        @include media-breakpoint-up("desktop") {
+            padding: 0 $desktopGridGap;
+        }
+    }
+    &12 {
+        width: 100%;
+        padding: 0 $mobileGridGap;
+        @include media-breakpoint-up("tablet") {
+            padding: 0 $tabletGridGap;
+        }
+        @include media-breakpoint-up("desktop") {
+            padding: 0 $desktopGridGap;
+        }
+    }
+}
+

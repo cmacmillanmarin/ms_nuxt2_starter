@@ -1,0 +1,32 @@
+{
+    "config": {
+        "head": {
+            "title": "Nuxt Starter | ",
+            "description": "Default Nuxt Starter Description",
+            "googleUser": "cmacmillanmarin",
+            "fbUser": "cmacmillanmarin",
+            "twUser": "cmacmillanmarin"
+        },
+        "routes": {
+            "home": "/",
+            "param": "/param"
+        }
+    },
+    "header": {},
+    "pages": {
+        "home": {
+            "head": {
+                "title": "Home",
+                "description": "Home Description"
+            }
+        },
+        "slug-1": {
+            "type": "param",
+            "head": {
+                "title": "Param Slug 1",
+                "description": "Param Slug 1 Description"
+            }
+        }
+    },
+    "assets": {}
+}

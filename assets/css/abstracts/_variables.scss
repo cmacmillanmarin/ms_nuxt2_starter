@@ -1,9 +1,80 @@
 //
-// assets/css/abstracts/_variables.scss
+// assets/css/abstracts/variables.scss
 
-$fontFamily: 'Roboto', sans-serif;
+
+$menuHeightMobile: 37px;
+$heightUIFiltersMobile: 70px;
+$heightHeaderFiltersMobile: 58px;
+$menuHeight: 140px;
+$maxViewSize: 1801px;
+$maxGridSize: 1441px;
+
+
+// Grid
+$mobileGridGap: 5px;
+$tabletGridGap: 10px;
+$desktopGridGap: 10px;
+
+$padding-1: 10px;
+$padding-2: 20px;
+$padding-3: 30px;
+$padding-4: 40px;
+$padding-5: 50px;
+$padding-6: 60px;
+$margin-1: 10px;
+$margin-2: 20px;
+$margin-3: 30px;
+$margin-4: 40px;
+$margin-5: 50px;
+
+$padding-text-module-desktop:100px;
+
+$padding-inGridLayout: (
+    mobile-portrait: 20px,
+    mobile-landscape: 0,
+    tablet: 50px,
+    desktop: 75px,
+    desktop-large: 180px,
+    desktop-extra-large: 180px,
+    desktop-view: $maxViewSize
+);
+@function inGridLayout($key) {
+    @if map-has-key($padding-inGridLayout, $key) {
+        @return map-get($padding-inGridLayout, $key);
+    }
+
+    @warn "Unknown `#{$key}` in $padding-inGridLayout.";
+    @return null;
+}
 
 // Colors
-$black: black;
-$lightGrey: lightgrey;
-$darkGrey: darkgrey;
+$chny: #c30f2e;
+$grey: #d8d8d8;
+$white: #ffffff;
+$black: #252525;
+$darkGrey: #666666;
+$darkGrey2: #222227;
+$paleGrey: #f3f3f3;
+$lightGrey: #f9f9f9;
+$lightPink: #f5f0f0;
+$peachyPink: #feb9c5;
+$backdrop: rgba(0,0,0,0.5);
+$error: #ff1f1f;
+$success:  #21b32c;
+
+// Gradients
+$overlayGradient: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8));
+
+//EASE timing functions
+$easeOutQuad: cubic-bezier(0.250, 0.460, 0.450, 0.940); /* easeOutQuad */
+$easeOutCubic: cubic-bezier(0.215, 0.610, 0.355, 1.000); /* easeOutCubic */
+$easeOutQuart: cubic-bezier(0.165, 0.840, 0.440, 1.000); /* easeOutQuart */
+$easeOutQuint: cubic-bezier(0.230, 1.000, 0.320, 1.000); /* easeOutQuint */
+$easeOutSine: cubic-bezier(0.390, 0.575, 0.565, 1.000); /* easeOutSine */
+$easeOutExpo: cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo */
+$easeOutCirc: cubic-bezier(0.075, 0.820, 0.165, 1.000); /* easeOutCirc */
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.320, 1.275); /* easeOutBack */
+
+// Z-INDEX
+$zZoom: 99999;
+$zModal: 99998;

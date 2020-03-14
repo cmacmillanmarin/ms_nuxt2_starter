@@ -1,0 +1,7 @@
+{
+    "presets": [
+      ["env", {
+        "targets:": { "node": "10" }  // Change this to your node version
+      }]
+    ]
+  }

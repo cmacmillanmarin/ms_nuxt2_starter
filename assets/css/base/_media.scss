@@ -1,10 +1,41 @@
 //
 // assets/css/layout/_media.scss
 
-/**
- * Make media elements responsive
- */
-img, video, object {
-	max-width: 100%;
-	height: auto;
+.a-image, .a-video, .ratio-wrapper {
+    width: 100%;
+    @include aspect-ratio(1, 1);
+    &.r1x1 {
+        @include  aspect-ratio(1, 1);
+    }
+    &.r4x5 {
+        @include  aspect-ratio(4, 5);
+    }
+    &.r16x9, &.r839x472 { // hack newsletter img please remove harcode 839x472 ratio
+        @include  aspect-ratio(16, 9);
+    }
+    &.r9x16 {
+        @include  aspect-ratio(9, 16);
+    }
+    &.r2x3 {
+        @include  aspect-ratio(2, 3);
+    }
+    &.r3x2 {
+        @include  aspect-ratio(3, 2);
+    }
+    &.r7x5 {
+        @include  aspect-ratio(7, 5);
+    }
+    &.r5x7 {
+        @include  aspect-ratio(5, 7);
+    }
+    &.r4x3 {
+        @include  aspect-ratio(4, 3);
+    }
+    &.r3x4 {
+        @include  aspect-ratio(3, 4);
+    }
+    &.r18x5 {
+        @include  aspect-ratio(18, 5);
+    }
 }
+

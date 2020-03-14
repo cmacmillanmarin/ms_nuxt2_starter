@@ -4,16 +4,37 @@
 
 <template>
     <div class="l-error">
-        <h1 v-if="error.statusCode === 404">Page not found</h1>
-        <h1 v-else>An error occurred</h1>
+        <p>ERROR PAGE</p>
     </div>
 </template>
 
 <script>
-    export default {
-        props: ['error'],
-        mounted() {
-            console.log("ERROR LAYOUT");
+
+import LifecycleHooks from "~/mixins/LifecycleHooks";
+
+export default {
+    mixins: [LifecycleHooks],
+    props: {
+        error: {
+            type: Object,
+            default: ()=>""
+        }
+    },
+    methods: {
+        setInitValue() {
+            for (const i in this.error) {
+                console.log(i + "--------" + this.error[i]);
+            }
         }
     }
+};
 </script>
+
+<style lang="scss">
+
+    .l-error {
+        padding: 110px 20px 20px;
+        text-align: center;
+    }
+
+</style>

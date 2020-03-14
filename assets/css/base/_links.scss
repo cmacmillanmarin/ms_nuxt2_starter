@@ -6,7 +6,10 @@ a {
 	text-decoration: none;
 	outline: 0;
 
-	&:hover, &:focus {
-		color: $darkGrey;
+	&:hover {
+		color: $black;
+	}
+	&:focus {
+		outline: 1px solid $chny;
 	}
 }

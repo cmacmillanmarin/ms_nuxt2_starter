@@ -1,0 +1,28 @@
+// VUE TRANSITIONS
+.fade-opacity-enter-active, .fade-opacity-leave-active {
+    transition: opacity 0.3s ease-out;
+    will-change: opacity;
+  }
+.fade-opacity-enter, .fade-opacity-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+}
+.fade-opacity-enter-to, .fade-opacity-leave {
+    opacity: .99;
+}
+
+//FADE OUT_IN Trick
+$fade-in-out-transition-speed: 0.2s;
+
+.fade-out-in-enter-active,
+.fade-out-in-leave-active {
+    transition: opacity .2s;
+}
+
+.fade-out-in-enter-active {
+    transition-delay: .2s;
+}
+
+.fade-out-in-enter,
+.fade-out-in-leave-to {
+    opacity: 0;
+}

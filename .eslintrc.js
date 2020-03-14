@@ -8,14 +8,31 @@ module.exports = {
         parser: 'babel-eslint'
     },
     extends: [
-        // https://github.com/vuejs/eslint-plugin-vue#priority-a-essential-error-prevention
-        // consider switching to `plugin:vue/strongly-recommended` or `plugin:vue/recommended` for stricter rules.
-        'plugin:vue/essential'
+        '@nuxtjs',
+        'plugin:nuxt/recommended'
     ],
-    // required to lint *.vue files
-    plugins: [
-        'vue'
-    ],
-    // add your custom rules here
-    rules: {}
-}
+    plugins: ['vue'],
+    rules: {
+        'no-console': 'off',
+        'vue/no-v-html': 0,
+        'vue/html-indent': ['error', 4],
+        'vue/max-attributes-per-line': 0,
+        'vue/no-unused-components': 0,
+        'vue/require-component-is': 0,
+        'vue/attributes-order': 0,
+        'vue/valid-template-root': 0,
+        'import/first': false,
+        'arrow-spacing': ['error', { before: false, after: false }],
+        'space-before-function-paren': ['error', 'never'],
+        "object-curly-spacing": ["error", "never"],
+        "node/no-deprecated-api": 0,
+        "new-cap": 0,
+        indent: ['error', 4],
+        semi: ['error', 'always'],
+        quotes: ['error', 'double'],
+        // allow async-await
+        'generator-star-spacing': 'off',
+        // allow debugger during development
+        'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    }
+};

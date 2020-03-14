@@ -1,0 +1,45 @@
+//
+// assets/css/layout/_keyframes.scss
+
+.mask {
+    opacity: 0;
+    will-change: opacity;
+    // -webkit-mask-image: linear-gradient(170deg, rgb(0, 0, 0) 0%, rgba(255, 255, 255, 0) 0%);
+    // -webkit-mask-size: cover;
+}
+
+.bounce {
+    -webkit-animation-name: bounce;
+    animation-name: bounce;
+}
+
+.animated {
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    -webkit-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes bounce {
+    0%,
+    100% {
+        -webkit-transform: translateY(0px);
+    }
+    50% {
+        -webkit-transform: translateY(-10px);
+    }
+}
+
+@keyframes bounce {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
