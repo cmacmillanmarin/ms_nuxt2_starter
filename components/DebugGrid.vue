@@ -4,8 +4,8 @@
 
 <template>
     <div class="grid-debug">
-        <div class="inViewLayout">
-            <div class="inGridLayout">
+        <div class="in-view-layout">
+            <div class="in-grid-layout">
                 <div class="grid">
                     <div v-for="i in 12" :key="i" class="col-1">
                         <div class="pink" />
@@ -34,13 +34,13 @@ export default {
         top: 0;
         left: 0;
         z-index: 999;
-        .inViewLayout {
+        .in-view-layout {
             height: 100%;
             > * {
                 outline: 1px solid rgba(0, 0, 0, 0.05);
             }
         }
-        .inGridLayout {
+        .in-grid-layout {
             height: 100%;
             > div {
                 outline: 0;

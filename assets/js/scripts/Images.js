@@ -8,12 +8,15 @@ const size = require("image-size");
 const FILES = [];
 const QUEQUE = [];
 const OUT_PATH = "static/assets/";
-const JSON_PATH = "data/parser/dummy/base.json";
+const JSON_PATH = "data/en.json";
 const JSON_FILE = JSON.parse(fs.readFileSync(JSON_PATH, "utf8"));
 const SIZES = [
     2400,
+    2000,
     1600,
-    800
+    1200,
+    800,
+    400
 ];
 
 let IN_PATH = "assets/img/";
@@ -109,11 +112,11 @@ const gcd = (x, y)=>{
         const _gdc = gcd(width, height);
         JSON_FILE.assets[getIdOf(cleanPath)] = {
             src: `assets/img/${OUT_RELATIVE_PATH}${cleanName(FILE)}.${format}`,
-            alt: "Consequat nostrud est labore.",
+            alt: cleanName(FILE),
             ratio: `${width / _gdc}x${height / _gdc}`
         };
         for (const SIZE of SIZES) {
-            const outPath = `${OUT_PATH + SIZE}/assets/img/${OUT_RELATIVE_PATH}${cleanName(FILE)}.${format}`;
+            const outPath = `${OUT_PATH + SIZE}/${OUT_RELATIVE_PATH}${cleanName(FILE)}.${format}`;
             createPathFor(outPath);
             QUEQUE.push(`convert ${FILE} -resize ${SIZE} ${outPath}`);
         }

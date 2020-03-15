@@ -3,13 +3,14 @@
         "head": {
             "title": "Nuxt Starter | ",
             "description": "Default Nuxt Starter Description",
-            "googleUser": "cmacmillanmarin",
-            "fbUser": "cmacmillanmarin",
-            "twUser": "cmacmillanmarin"
+            "fb": "cmacmillanmarin",
+            "tw": "cmacmillanmarin"
         },
         "routes": {
             "home": "/",
-            "param": "/param"
+            "dynamic": "/dynamic",
+            "webgl": "/webgl",
+            "threejs": "/threejs"
         }
     },
     "header": {},
@@ -18,15 +19,37 @@
             "head": {
                 "title": "Home",
                 "description": "Home Description"
-            }
+            },
+            "images": [
+                "static-assets-base",
+                "static-assets-base64"
+            ]
         },
-        "slug-1": {
-            "type": "param",
+        "webgl": {
             "head": {
-                "title": "Param Slug 1",
-                "description": "Param Slug 1 Description"
-            }
+                "title": "WebGL",
+                "description": "WebGL Description"
+            },
+            "image": "static-assets-base64"
+        },
+        "threejs": {
+            "head": {
+                "title": "Three js",
+                "description": "Three js Description"
+            },
+            "image": "static-assets-base64"
         }
     },
-    "assets": {}
+    "assets": {
+        "static-assets-base64": {
+            "src": "assets/img/base64.jpg",
+            "alt": "base64",
+            "ratio": "1x1"
+        },
+        "static-assets-base": {
+            "src": "assets/img/base.jpg",
+            "alt": "base",
+            "ratio": "1x1"
+        }
+    }
 }

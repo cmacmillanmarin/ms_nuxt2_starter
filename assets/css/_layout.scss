@@ -1,0 +1,204 @@
+//
+// assets/css/layout/_layout.scss
+
+.in-view-layout {
+    position: relative;
+    @include for-breakpoint("desktop-xl") {
+        padding: 0px calc((100vw - 1681px) * 0.5);
+    }
+}
+
+.in-grid-layout {
+    position: relative;
+    @include for-breakpoint("tablet") {
+        padding: 0px in-grid-layout(tablet);
+    }
+    @include for-breakpoint("desktop-s") {
+        padding: 0px in-grid-layout(desktop-s);
+    }
+    @include for-breakpoint("desktop-m") {
+        padding: 0px in-grid-layout(desktop-m);
+    }
+    @include for-breakpoint("desktop-l") {
+        padding: 0px in-grid-layout(desktop-l);
+    }
+}
+
+.no-wrap-grid {
+    white-space: nowrap;
+    margin-left: -$mobile_grid_gap;
+    margin-right: -$mobile_grid_gap;
+    @include for-breakpoint("tablet") {
+        margin-left: -$tablet_grid_gap;
+        margin-right: -$tablet_grid_gap;
+    }
+    @include for-breakpoint("desktop-s") {
+        margin-left: -$desktop_grid_gap;
+        margin-right: -$desktop_grid_gap;
+    }
+    > * {
+        display: inline-block;
+        vertical-align: top;
+    }
+}
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -$mobile_grid_gap;
+    margin-right: -$mobile_grid_gap;
+    @include for-breakpoint("tablet") {
+        margin-left: -$tablet_grid_gap;
+        margin-right: -$tablet_grid_gap;
+    }
+    @include for-breakpoint("desktop-s") {
+        margin-left: -$desktop_grid_gap;
+        margin-right: -$desktop_grid_gap;
+    }
+    &.centered {
+        justify-content: center;
+    }
+    &.align-bottom {
+        align-items: flex-end;
+    }
+    &.align-center {
+        align-items: center;
+    }
+    &.align-top {
+        align-items: flex-start;
+    }
+}
+
+.col- {
+    &1 {
+        width: 8.333333%;
+        padding: 0 $mobile_grid_gap;
+        @include for-breakpoint("tablet") {
+            padding: 0 $tablet_grid_gap;
+        }
+        @include for-breakpoint("desktop-s") {
+            padding: 0 $desktop_grid_gap;
+        }
+    }
+    &1-2 {
+        width: 12.5%;
+        padding: 0 $mobile_grid_gap;
+        @include for-breakpoint("tablet") {
+            padding: 0 $tablet_grid_gap;
+        }
+        @include for-breakpoint("desktop-s") {
+            padding: 0 $desktop_grid_gap;
+        }
+    }
+    &2 {
+        width: 16.666666%;
+        padding: 0 $mobile_grid_gap;
+        @include for-breakpoint("tablet") {
+            padding: 0 $tablet_grid_gap;
+        }
+        @include for-breakpoint("desktop-s") {
+            padding: 0 $desktop_grid_gap;
+        }
+    }
+    &3 {
+        width: 25%;
+        padding: 0 $mobile_grid_gap;
+        @include for-breakpoint("tablet") {
+            padding: 0 $tablet_grid_gap;
+        }
+        @include for-breakpoint("desktop-s") {
+            padding: 0 $desktop_grid_gap;
+        }
+    }
+    &4 {
+        width: 33.333333%;
+        padding: 0 $mobile_grid_gap;
+        @include for-breakpoint("tablet") {
+            padding: 0 $tablet_grid_gap;
+        }
+        @include for-breakpoint("desktop-s") {
+            padding: 0 $desktop_grid_gap;
+        }
+    }
+    &5 {
+        width: 41.666666%;
+        padding: 0 $mobile_grid_gap;
+        @include for-breakpoint("tablet") {
+            padding: 0 $tablet_grid_gap;
+        }
+        @include for-breakpoint("desktop-s") {
+            padding: 0 $desktop_grid_gap;
+        }
+    }
+    &6 {
+        width: 50%;
+        padding: 0 $mobile_grid_gap;
+        @include for-breakpoint("tablet") {
+            padding: 0 $tablet_grid_gap;
+        }
+        @include for-breakpoint("desktop-s") {
+            padding: 0 $desktop_grid_gap;
+        }
+    }
+    &7 {
+        width: 58.333333%;
+        padding: 0 $mobile_grid_gap;
+        @include for-breakpoint("tablet") {
+            padding: 0 $tablet_grid_gap;
+        }
+        @include for-breakpoint("desktop-s") {
+            padding: 0 $desktop_grid_gap;
+        }
+    }
+    &8 {
+        width: 66.666666%;
+        padding: 0 $mobile_grid_gap;
+        @include for-breakpoint("tablet") {
+            padding: 0 $tablet_grid_gap;
+        }
+        @include for-breakpoint("desktop-s") {
+            padding: 0 $desktop_grid_gap;
+        }
+    }
+    &9 {
+        width: 75%;
+        padding: 0 $mobile_grid_gap;
+        @include for-breakpoint("tablet") {
+            padding: 0 $tablet_grid_gap;
+        }
+        @include for-breakpoint("desktop-s") {
+            padding: 0 $desktop_grid_gap;
+        }
+    }
+    &10 {
+        width: 83.333333%;
+        padding: 0 $mobile_grid_gap;
+        @include for-breakpoint("tablet") {
+            padding: 0 $tablet_grid_gap;
+        }
+        @include for-breakpoint("desktop-s") {
+            padding: 0 $desktop_grid_gap;
+        }
+    }
+    &11 {
+        width: 91.666666%;
+        padding: 0 $mobile_grid_gap;
+        @include for-breakpoint("tablet") {
+            padding: 0 $tablet_grid_gap;
+        }
+        @include for-breakpoint("desktop-s") {
+            padding: 0 $desktop_grid_gap;
+        }
+    }
+    &12 {
+        width: 100%;
+        padding: 0 $mobile_grid_gap;
+        @include for-breakpoint("tablet") {
+            padding: 0 $tablet_grid_gap;
+        }
+        @include for-breakpoint("desktop-s") {
+            padding: 0 $desktop_grid_gap;
+        }
+    }
+}
+

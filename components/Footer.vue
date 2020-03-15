@@ -3,15 +3,22 @@
 -->
 
 <template>
-    <footer class="inViewLayout">
-        Footer
+    <footer>
+        <in-grid>
+            Footer
+        </in-grid>
     </footer>
 </template>
 
 <script>
 
+import InGrid from "~/components/InGrid";
+
 export default {
-    name: "Footer"
+    name: "Footer",
+    components: {
+        InGrid
+    }
 };
 </script>
 

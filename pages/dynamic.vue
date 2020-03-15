@@ -1,15 +1,12 @@
 <!--
-    pages/home.vue
+    pages/dynamic.vue
 -->
 
 <template>
-    <section class="page home below-header">
+    <section class="page dynamic below-header">
         <in-grid>
-            <div class="grid">
-                <div v-for="(img, i) in page.images" :key="i" :class="[`col-${cols}`]">
-                    <an-image :data="$core.content.assets[img]" />
-                </div>
-            </div>
+            <h1>Dynamic Page</h1>
+            <pre v-text="$route.params" />
         </in-grid>
     </section>
 </template>
@@ -22,23 +19,21 @@ import LifecycleHooks from "~/mixins/LifecycleHooks";
 import ResponsiveTemplate from "~/mixins/ResponsiveTemplate";
 
 import InGrid from "~/components/InGrid";
-import AnImage from "~/components/Image";
 
 export default {
-    name: "Home",
+    name: "Dynamic",
     components: {
-        AnImage,
         InGrid
     },
     mixins: [Head, LifecycleHooks, Transitions, ResponsiveTemplate],
-    computed: {
-        cols() {
-            return this.isMobileTemplate ? 12 : 6;
-        }
-    },
-    asyncData({$core}) {
+    asyncData({params}) {
         return {
-            page: $core.content.pages.home
+            page: {
+                head: {
+                    title: `Dynamic page ${params.slug}`,
+                    description: "Dynamic page Description"
+                }
+            }
         };
     },
     methods: {
@@ -53,8 +48,6 @@ export default {
 
 <style lang="scss">
 
-    .home {
-        text-align: center;
-    }
+    // .dynamic {}
 
 </style>

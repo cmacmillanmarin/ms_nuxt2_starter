@@ -3,16 +3,14 @@
 
 import Events from "./Events";
 import Loader from "./Loader";
-import Swipe from "./Swipe";
-import Pinch from "./Pinch";
-import Tap from "./Tap";
-import Pan from "./Pan";
+import Swipe from "./gestures/Swipe";
+import Pinch from "./gestures/Pinch";
+import Tap from "./gestures/Tap";
+import Pan from "./gestures/Pan";
 import Tween from "./Tween";
 import Ease from "./Ease";
 import Utils from "./Utils";
-import LoadLibrary from "./LoadLibrary";
 import * as WebGL from "./webgl/index";
-import WebGLQuad from "./WebGLQuad";
 
 export default class Core {
     constructor(Content) {
@@ -26,9 +24,7 @@ export default class Core {
         this.tween = Tween;
         this.ease = Ease;
         this.utils = Utils;
-        this.loadLibrary = LoadLibrary;
         this.webgl = WebGL;
-        this.Quad = WebGLQuad;
         process.browser && this.mount();
     }
 

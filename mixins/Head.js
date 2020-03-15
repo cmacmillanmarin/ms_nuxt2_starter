@@ -5,7 +5,7 @@ export default {
     head() {
         const lang = "en";
         const baseUrl = process.env.baseUrl;
-        const {title, googleUser, fbUser, twUser} = this.$core.content.config.head;
+        const {title, googleUser, fb, tw} = this.$core.content.config.head;
         const __twImage = `${baseUrl}/img/share_twitter.jpg`;
         const __ogImage = `${baseUrl}/img/share_facebook.jpg`;
         return {
@@ -29,10 +29,10 @@ export default {
                 {hid: "og:description", property: "og:description", content: this.page.head.description},
                 {hid: "og:image", property: "og:image", content: __ogImage},
                 {hid: "og:image:secure_url", property: "og:image:secure_url", content: __ogImage},
-                {hid: "article:publisher", property: "article:publisher", content: `https://www.facebook.com/${fbUser}`},
+                {hid: "article:publisher", property: "article:publisher", content: `https://www.facebook.com/${fb}`},
                 {hid: "twitter:card", name: "twitter:card", content: "summary"},
-                {hid: "twitter:site", name: "twitter:site", content: `@${twUser}`},
-                {hid: "twitter:creator", name: "twitter:creator", content: `@${twUser}`},
+                {hid: "twitter:site", name: "twitter:site", content: `@${tw}`},
+                {hid: "twitter:creator", name: "twitter:creator", content: `@${tw}`},
                 {hid: "twitter:title", name: "twitter:title", content: this.page.head.title},
                 {hid: "twitter:description", name: "twitter:description", content: this.page.head.description},
                 {hid: "twitter:image", name: "twitter:image", content: __twImage}
@@ -40,7 +40,7 @@ export default {
             link: [
                 {rel: "canonical", href: `${baseUrl}${this.$route.path}`},
                 {rel: "publisher", href: `https://plus.google.com/${googleUser}`},
-                {rel: "icon", type: "image/x-icon", href: `${baseUrl}/favicon.ico`},
+                {rel: "icon", type: "image/x-icon", href: `${baseUrl}/img/favicon/favicon.ico`},
                 {rel: "icon", sizes: "192x192", type: "image/png", href: `${baseUrl}/img/favicon/android-icon-192x192.png`},
                 {rel: "icon", sizes: "16x16", type: "image/png", href: `${baseUrl}/img/favicon/favicon-16x16.png`},
                 {rel: "icon", sizes: "32x32", type: "image/png", href: `${baseUrl}/img/favicon/favicon-32x32.png`},

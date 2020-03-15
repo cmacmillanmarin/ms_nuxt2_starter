@@ -1,0 +1,110 @@
+//
+// assets/css/abstracts/mixins.scss
+
+@mixin importFont($fontname, $filename, $isBold: false, $isItalic: false) {
+    @font-face {
+        font-family: $fontname; // IE9 Compat Modes
+        src: url('~static/fonts/#{$filename}.eot'); // IE6-IE8
+        src: url('~static/fonts/#{$filename}.eot?#iefix') format('embedded-opentype'), // Modern Browsers
+        url('~static/fonts/#{$filename}.woff') format('woff'), // Safari, Android, iOS
+        url('~static/fonts/#{$filename}.ttf') format('truetype'); // Legacy iOS
+        font-display: property;
+        @if $isBold {
+            font-weight: $isBold;
+        }
+        @if $isItalic {
+            font-style: italic;
+        }
+        @else {
+            font-style: normal;
+        }
+    }
+}
+
+@mixin transform($transforms) {
+    transform: $transforms;
+}
+
+@mixin borderRadius($border-radiuss) {
+    -moz-border-radius: $border-radiuss;
+    -o-border-radius: $border-radiuss;
+    -ms-border-radius: $border-radiuss;
+    -webkit-border-radius: $border-radiuss;
+    border-radius: $border-radiuss;
+}
+
+@mixin centerX() {
+    left: 50%;
+    @include transform(translateX(-50%));
+}
+
+@mixin centerY() {
+    top: 50%;
+    @include transform(translateY(-50%));
+}
+
+@mixin centerXY() {
+    left: 50%;
+    top: 50%;
+    @include transform(translate(-50%,
+    -50%));
+}
+
+// Image Aspect Ratio
+@mixin aspect-ratio($width, $height) {
+    position: relative;
+    &:before {
+        display: block;
+        content: "";
+        width: 100%;
+        padding-top: floor(($height / $width) * 100%);
+    }
+    img, video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: auto;
+    }
+}
+
+@mixin enable-touch-callout(){
+    -webkit-touch-callout: default;
+    -webkit-user-select: default; /* Safari */
+    -khtml-user-select: default; /* Konqueror HTML */
+        -moz-user-select: default; /* Old versions of Firefox */
+        -ms-user-select: default; /* Internet Explorer/Edge */
+            user-select: default; /* Non-prefixed version, currently
+                            supported by Chrome, Opera and Firefox */
+}
+
+@mixin disable-touch-callout(){
+    -webkit-touch-callout: none;
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                            supported by Chrome, Opera and Firefox */
+}
+
+// https://github.com/twbs/bootstrap/blob/master/scss/mixins/_breakpoints.scss
+
+// Breakpoint viewport sizes and media queries.
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+    $min: map-get($breakpoints, $name);
+    @return if($min != 0, $min, null);
+}
+
+@mixin for-breakpoint($name, $breakpoints: $grid-breakpoints) {
+    $min: breakpoint-min($name, $breakpoints);
+    @if $min {
+        @media (min-width: $min) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}

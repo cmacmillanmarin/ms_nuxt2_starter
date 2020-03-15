@@ -6,8 +6,8 @@
     <div class="__content">
         <the-header />
         <nuxt />
-        <grid />
         <the-footer />
+        <debug-grid />
     </div>
 </template>
 
@@ -16,16 +16,16 @@
 import LifecycleHooks from "~/mixins/LifecycleHooks";
 import ResponsiveTemplate from "~/mixins/ResponsiveTemplate";
 
-import Grid from "~/components/Grid";
 import TheHeader from "~/components/Header";
 import TheFooter from "~/components/Footer";
+import DebugGrid from "~/components/DebugGrid";
 
 export default {
     name: "Default",
     components: {
-        Grid,
         TheHeader,
-        TheFooter
+        TheFooter,
+        DebugGrid
     },
     mixins: [LifecycleHooks, ResponsiveTemplate],
     methods: {
@@ -55,12 +55,3 @@ export default {
 };
 
 </script>
-
-<style lang="scss">
-
-    .__content {
-        width: 100%;
-        height: 100%;
-    }
-
-</style>

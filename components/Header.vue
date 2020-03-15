@@ -4,22 +4,22 @@
 
 <template>
     <header>
-        <div class="inViewLayout">
-            <div class="inGridLayout">
-                <nav ref="nav" class="primary">
-                    <ul>
-                        <li>
-                            <ada-link>
-                                Link
-                            </ada-link>
-                            <ada-button>
-                                Button
-                            </ada-button>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
+        <in-grid>
+            <nav ref="nav" class="primary">
+                <ul>
+                    <li>
+                        <ada-link>
+                            Link
+                        </ada-link>
+                    </li>
+                    <li>
+                        <ada-button>
+                            Button
+                        </ada-button>
+                    </li>
+                </ul>
+            </nav>
+        </in-grid>
     </header>
 </template>
 
@@ -27,6 +27,7 @@
 
 import AdaLink from "~/components/ADALink";
 import AdaButton from "~/components/ADAButton";
+import InGrid from "~/components/InGrid";
 
 import LifecycleHooks from "~/mixins/LifecycleHooks";
 import ResponsiveTemplate from "~/mixins/ResponsiveTemplate";
@@ -35,7 +36,8 @@ export default {
     name: "Header",
     components: {
         AdaLink,
-        AdaButton
+        AdaButton,
+        InGrid
     },
     mixins: [LifecycleHooks, ResponsiveTemplate]
 };

@@ -33,7 +33,6 @@ export default {
 <style lang="scss">
 
     .l-error {
-        padding: 110px 20px 20px;
         text-align: center;
     }
 

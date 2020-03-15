@@ -1,10 +1,15 @@
 //
 // assets/css/abstracts/variables.scss
 
+// Menu
+$mobile_menu_height: 100px;
+$tablet_menu_height: 100px;
+$desktop_menu_height: 100px;
+
 // Grid
-$mobile_gridgap: 5px;
-$tablet_gridgap: 10px;
-$desktop_gridgap: 10px;
+$mobile_grid_gap: 5px;
+$tablet_grid_gap: 5px;
+$desktop_grid_gap: 10px;
 
 $mobile_padding: 10px;
 $tablet_padding: 20px;
@@ -14,21 +19,20 @@ $mobile_margin: 10px;
 $tablet_margin: 20px;
 $desktop_margin: 30px;
 
-$padding-inGridLayout: (
+$padding-in-grid-layout: (
     mobile-p: 20px,
-    tablet: 50px,
-    desktop-s: 75px,
-    desktop-m: 180px,
-    desktop-l: 180px,
-    desktop-xl: 180px
+    tablet: 40px,
+    desktop-s: 60px,
+    desktop-m: 80px,
+    desktop-l: 80px,
+    desktop-xl: 100px
 );
 
-@function inGridLayout($key) {
-    @if map-has-key($padding-inGridLayout, $key) {
-        @return map-get($padding-inGridLayout, $key);
+@function in-grid-layout($key) {
+    @if map-has-key($padding-in-grid-layout, $key) {
+        @return map-get($padding-in-grid-layout, $key);
     }
-
-    @warn "Unknown `#{$key}` in $padding-inGridLayout.";
+    @warn "Unknown `#{$key}` in $padding-in-grid-layout.";
     @return null;
 }
 

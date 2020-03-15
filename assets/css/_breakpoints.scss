@@ -1,11 +1,8 @@
 //
 // assets/css/layout/_breakpoints.scss
 
-@import "../abstracts/variables";
-
-
 $grid-breakpoints: (
-    mobile-p: 0,
+    mobile-p: 0px,
     mobile-l: 576px,
     tablet: 768px,
     desktop-s: 992px,
@@ -19,27 +16,27 @@ body {
         display: none;
         content: 'mobile-p';
 
-        @include media-breakpoint-up('mobile-l') {
+        @include for-breakpoint('mobile-l') {
             content: 'mobile-l';
         }
 
-        @include media-breakpoint-up('tablet') {
+        @include for-breakpoint('tablet') {
             content: 'tablet';
         }
 
-        @include media-breakpoint-up('desktop-s') {
+        @include for-breakpoint('desktop-s') {
             content: 'desktop-s';
         }
 
-        @include media-breakpoint-up('desktop-m') {
+        @include for-breakpoint('desktop-m') {
             content: 'desktop-m';
         }
 
-        @include media-breakpoint-up('desktop-l') {
+        @include for-breakpoint('desktop-l') {
             content: 'desktop-l';
         }
 
-        @include media-breakpoint-up('desktop-xl') {
+        @include for-breakpoint('desktop-xl') {
             content: 'desktop-xl';
         }
     }

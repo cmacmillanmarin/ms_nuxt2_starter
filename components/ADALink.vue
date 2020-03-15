@@ -33,7 +33,7 @@ export default {
             outline: none;
         }
         &:focus {
-            outline: 1px solid red;
+            color: red;
         }
     }
 </style>

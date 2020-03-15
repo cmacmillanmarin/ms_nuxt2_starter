@@ -6,7 +6,9 @@ import Router from "vue-router";
 import {interopDefault} from "./.nuxt/utils";
 
 const Home = ()=>interopDefault(import("~/pages/home.vue" /* webpackChunkName "pages/home" */));
-const Param = ()=>interopDefault(import("~/pages/param.vue" /* webpackChunkName "pages/param" */));
+const Threejs = ()=>interopDefault(import("~/pages/threejs.vue" /* webpackChunkName "pages/threejs" */));
+const WebGL = ()=>interopDefault(import("~/pages/webgl.vue" /* webpackChunkName "pages/webgl" */));
+const Dynamic = ()=>interopDefault(import("~/pages/dynamic.vue" /* webpackChunkName "pages/dynamic" */));
 
 const Content = require(`~/data/${process.env.lang}.json`);
 const {routes} = Content.config;
@@ -24,9 +26,19 @@ export function createRouter() {
                 component: Home
             },
             {
-                name: "param",
-                path: `${routes.param}/:slug`,
-                component: Param
+                name: "webgl",
+                path: `${routes.webgl}`,
+                component: WebGL
+            },
+            {
+                name: "threejs",
+                path: `${routes.threejs}`,
+                component: Threejs
+            },
+            {
+                name: "dynamic",
+                path: `${routes.dynamic}/:slug`,
+                component: Dynamic
             }
         ]
     };

@@ -27,11 +27,7 @@ export default {
             outline: none;
         }
         &:focus {
-            outline: 1px solid blue;
-        }
-        &.border:focus {
-            outline: none;
-            border: 1px solid blue !important;
+            color: red;
         }
     }
 </style>

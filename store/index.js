@@ -3,6 +3,7 @@
 
 import {detect} from "detect-browser";
 
+let to = 0;
 const templates = {
     mobile: {
         id: "mobile",
@@ -28,15 +29,15 @@ export const state = ()=>({
         ie: false,
         ios: false,
         android: false,
-        platform: "",
-        webGLSupported: false,
-        devicePixelRatio: 1
+        platform: ""
     },
     breakpoint: "",
     templates,
     template: templates.desktop.id,
     resize: true,
     viewportSize: {w: 0, h: 0},
+    devicePixelRatio: 1,
+    webGLSupported: false,
     _HANDLER: null
 });
 
@@ -71,7 +72,11 @@ export const mutations = {
     },
 
     setDevicePixelRatio(state, dpx) {
-        state.specs.devicePixelRatio = dpx;
+        state.devicePixelRatio = dpx;
+    },
+
+    setWebGLSupported(state, value) {
+        state.webGLSupported = value;
     },
 
     setViewport(state, {w, h}) {
@@ -106,20 +111,22 @@ export const actions = {
     },
 
     _updateBreakpoint({state, commit}) {
-        let breakpoint = window.getComputedStyle(document.body, "::after").getPropertyValue("content");
-
         const w = window.innerWidth || 0;
         const h = window.innerHeight || 0;
         const dpr = Math.min(2, window.devicePixelRatio);
-        commit("setViewport", {w, h});
-        commit("setDevicePixelRatio", dpr);
-
-        if (breakpoint) {
-            breakpoint = breakpoint.replace(/["']/g, "");
-        }
-
-        if (state.breakpoint !== breakpoint) {
-            commit("setBreakpoint", breakpoint);
+        const breakpoint = window.getComputedStyle(document.body, "::after").getPropertyValue("content").replace(/["']/g, "");
+        if (to === 0) {
+            commit("setViewport", {w, h});
+            commit("setDevicePixelRatio", dpr);
+            state.breakpoint !== breakpoint && commit("setBreakpoint", breakpoint);
+            to = 1;
+        } else {
+            clearTimeout(to);
+            setTimeout(()=>{
+                commit("setViewport", {w, h});
+                commit("setDevicePixelRatio", dpr);
+                state.breakpoint !== breakpoint && commit("setBreakpoint", breakpoint);
+            }, 50);
         }
     },
 
@@ -135,8 +142,7 @@ export const actions = {
     checkWebGL({commit}) {
         let canvas = document.createElement("canvas");
         let context = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
-
-        commit("setValueFor", {key: "webGLSupported", value: !!context});
+        commit("setWebGLSupported", !!context);
         canvas = null;
         context = null;
     }

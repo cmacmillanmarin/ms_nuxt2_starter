@@ -1,15 +1,27 @@
 //
 // assets/css/style.scss
 
-@import "./abs";
+@import "variables";
+@import "mixins";
+@import "breakpoints";
+@import "fonts";
+@import "media";
+@import "reset";
+@import "typo";
+@import "keyframes";
+@import "layout";
 
-@import "./base/body";
-@import "./base/fonts";
-@import "./base/links";
-@import "./base/lists";
-@import "./base/media";
-@import "./base/reset";
-@import "./base/typo";
-@import "./base/keyframes";
+.page {
+    opacity: 0;
+    will-change: opacity;
+}
 
-@import "./layout/layout";
+.below-header {
+    padding-top: $mobile_menu_height;
+    @include for-breakpoint("tablet") {
+        padding-top: $tablet_menu_height;
+    }
+    @include for-breakpoint("desktop-s") {
+        padding-top: $desktop_menu_height;
+    }
+}

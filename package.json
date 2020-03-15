@@ -11,7 +11,7 @@
     "scripts": {
         "dev": "cross-env ENV_FILE=.env.dev LANG=en nuxt",
         "build": "cross-env ENV_FILE=.env.generate LANG=en nuxt generate",
-        "parse-images": "node ./assets/js/scripts/ImageGenerator.js",
+        "parse-images": "node ./assets/js/scripts/Images.js",
         "lint": "eslint --ext .js,.vue .",
         "lintfix": "eslint --fix --ext .js,.vue ."
     },
