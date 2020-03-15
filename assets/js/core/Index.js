@@ -30,6 +30,7 @@ export default class Core {
 
     mount() {
         // Init
+        console.log("%c👻 @cmacmillanmarin", "background: black; color: white; padding: 10px 20px");
         requestAnimationFrame(this.raf.bind(this));
     }
 
