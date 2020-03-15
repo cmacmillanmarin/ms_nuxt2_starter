@@ -30,9 +30,11 @@ export default {
         })
     },
     methods: {
-        init() {
+        async init() {
             if (!window.THREE) {
-                console.log("load three!");
+                console.log("load three!", window.THREE);
+                await this.$core.loader.library("https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js");
+                console.log("three loaded!", window.THREE);
             } else {
                 // const {
                 //     Renderer,

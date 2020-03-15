@@ -1,5 +1,5 @@
 //
-// assets/js/scripts/ImageGenerator.js
+// assets/js/scripts/Images.js
 
 const fs = require("fs");
 const cmd = require("node-cmd");

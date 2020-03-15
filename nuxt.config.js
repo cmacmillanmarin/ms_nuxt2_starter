@@ -135,7 +135,6 @@ export default {
             }
         },
         extend(config, ctx) {
-            // Run ESLint on save
             if (ctx.isDev && ctx.isClient) {
                 config.module.rules.push({
                     enforce: "pre",
@@ -152,6 +151,7 @@ export default {
                   "glslify-loader"
                 ]
             });
+            config.module.rules.push({ test: /\.worker\.js$/, loader: 'worker-loader'});
         }
     },
 
