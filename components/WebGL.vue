@@ -18,7 +18,7 @@ import ResizeHandler from "~/mixins/ResizeHandler";
 import LifecycleHooks from "~/mixins/LifecycleHooks";
 
 export default {
-    name: "TransitionCanvas",
+    name: "WebGL",
     mixins: [LifecycleHooks, MediaSource, ResizeHandler],
     props: {
         image: Object

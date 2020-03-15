@@ -6,7 +6,7 @@ import Router from "vue-router";
 import {interopDefault} from "./.nuxt/utils";
 
 const Home = ()=>interopDefault(import("~/pages/home.vue" /* webpackChunkName "pages/home" */));
-const Threejs = ()=>interopDefault(import("~/pages/threejs.vue" /* webpackChunkName "pages/threejs" */));
+const Three = ()=>interopDefault(import("~/pages/three.vue" /* webpackChunkName "pages/three" */));
 const WebGL = ()=>interopDefault(import("~/pages/webgl.vue" /* webpackChunkName "pages/webgl" */));
 const Dynamic = ()=>interopDefault(import("~/pages/dynamic.vue" /* webpackChunkName "pages/dynamic" */));
 
@@ -31,9 +31,9 @@ export function createRouter() {
                 component: WebGL
             },
             {
-                name: "threejs",
-                path: `${routes.threejs}`,
-                component: Threejs
+                name: "three",
+                path: `${routes.three}`,
+                component: Three
             },
             {
                 name: "dynamic",

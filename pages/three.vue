@@ -3,7 +3,9 @@
 -->
 
 <template>
-    <section class="page threejs" />
+    <section class="page three">
+        <threejs />
+    </section>
 </template>
 
 <script>
@@ -11,12 +13,17 @@
 import Head from "~/mixins/Head";
 import Transitions from "~/mixins/Transitions";
 
+import Threejs from "~/components/Threejs";
+
 export default {
-    name: "Threejs",
+    name: "Three",
+    components: {
+        Threejs
+    },
     mixins: [Head, Transitions],
     asyncData({$core}) {
         return {
-            page: $core.content.pages.threejs
+            page: $core.content.pages.three
         };
     }
 };

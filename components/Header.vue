@@ -7,9 +7,9 @@
         <in-grid>
             <nav ref="nav" class="primary">
                 <ul>
-                    <li>
-                        <ada-link>
-                            Link
+                    <li v-for="(link, i) in links" :key="i">
+                        <ada-link :to="link.route">
+                            {{ link.label }}
                         </ada-link>
                     </li>
                     <li>
@@ -39,7 +39,12 @@ export default {
         AdaButton,
         InGrid
     },
-    mixins: [LifecycleHooks, ResponsiveTemplate]
+    mixins: [LifecycleHooks, ResponsiveTemplate],
+    computed: {
+        links() {
+            return this.$core.content.header.links;
+        }
+    }
 };
 
 </script>
