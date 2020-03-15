@@ -7,7 +7,7 @@ const size = require("image-size");
 
 const FILES = [];
 const QUEQUE = [];
-const OUT_PATH = "static/assets/";
+const OUT_PATH = "static/img/";
 const JSON_PATH = "data/en.json";
 const JSON_FILE = JSON.parse(fs.readFileSync(JSON_PATH, "utf8"));
 const SIZES = [
@@ -111,7 +111,7 @@ const gcd = (x, y)=>{
         const {width, height} = size(FILE);
         const _gdc = gcd(width, height);
         JSON_FILE.assets[getIdOf(cleanPath)] = {
-            src: `assets/img/${OUT_RELATIVE_PATH}${cleanName(FILE)}.${format}`,
+            src: `${OUT_RELATIVE_PATH}${cleanName(FILE)}.${format}`,
             alt: cleanName(FILE),
             ratio: `${width / _gdc}x${height / _gdc}`
         };

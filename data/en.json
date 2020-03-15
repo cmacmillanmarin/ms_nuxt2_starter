@@ -1,55 +1,59 @@
 {
-    "config": {
-        "head": {
-            "title": "Nuxt Starter | ",
-            "description": "Default Nuxt Starter Description",
-            "fb": "cmacmillanmarin",
-            "tw": "cmacmillanmarin"
-        },
-        "routes": {
-            "home": "/",
-            "dynamic": "/dynamic",
-            "webgl": "/webgl",
-            "threejs": "/threejs"
-        }
+  "config": {
+    "head": {
+      "title": "Nuxt Starter | ",
+      "description": "Default Nuxt Starter Description",
+      "fb": "cmacmillanmarin",
+      "tw": "cmacmillanmarin"
     },
-    "header": {},
-    "pages": {
-        "home": {
-            "head": {
-                "title": "Home",
-                "description": "Home Description"
-            },
-            "images": [
-                "static-assets-base",
-                "static-assets-base64"
-            ]
-        },
-        "webgl": {
-            "head": {
-                "title": "WebGL",
-                "description": "WebGL Description"
-            },
-            "image": "static-assets-base64"
-        },
-        "threejs": {
-            "head": {
-                "title": "Three js",
-                "description": "Three js Description"
-            },
-            "image": "static-assets-base64"
-        }
+    "routes": {
+      "home": "/",
+      "dynamic": "/dynamic",
+      "webgl": "/webgl",
+      "threejs": "/threejs"
     },
-    "assets": {
-        "static-assets-base64": {
-            "src": "assets/img/base64.jpg",
-            "alt": "base64",
-            "ratio": "1x1"
-        },
-        "static-assets-base": {
-            "src": "assets/img/base.jpg",
-            "alt": "base",
-            "ratio": "1x1"
-        }
+    "langs": [
+      "en",
+      "es"
+    ]
+  },
+  "header": {},
+  "pages": {
+    "home": {
+      "head": {
+        "title": "Home",
+        "description": "Home Description"
+      },
+      "images": [
+        "static-img-base",
+        "static-img-base64"
+      ]
+    },
+    "webgl": {
+      "head": {
+        "title": "WebGL",
+        "description": "WebGL Description"
+      },
+      "image": "static-img-base64"
+    },
+    "threejs": {
+      "head": {
+        "title": "Three js",
+        "description": "Three js Description"
+      },
+      "image": "static-img-base64"
     }
+  },
+  "assets": {
+    "static-img-base": {
+      "src": "base.jpg",
+      "alt": "base",
+      "ratio": "1x1"
+    },
+    "static-img-base64": {
+      "src": "base64.jpg",
+      "alt": "base64",
+      "ratio": "1x1"
+    }
+  }
 }
