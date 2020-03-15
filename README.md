@@ -4,17 +4,14 @@
 
 [Demo]() 
 
-## Setup & Development
-
-### Setup
+### Setup & Development
 - `npm install`
 - `npm run parse-images`
-- Run development server: `npm run dev` and go to `localhost:3000` / `0.0.0.0:3000`
+- `npm run dev` -> `localhost:3000` / `0.0.0.0:3000`
 
-## Compile the code for production or staging
-This process will compile the html templates, scss & JS.
-
-- `npm run build`
+### Deploy
+It will generate the production static html and js files.
+- `npm run build` -> `/dist`
 
 ## Google Lighthouse report
 
