@@ -84,7 +84,7 @@ dist
 sw.*
 
 # Generated files
-htdocs/
+dist/
 
 # Test coverage files
 coverage/
