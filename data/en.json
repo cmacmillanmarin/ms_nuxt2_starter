@@ -1,82 +1,83 @@
 {
-    "config": {
-        "head": {
-            "title": "Nuxt Starter | ",
-            "description": "Default Nuxt Starter Description",
-            "fb": "cmacmillanmarin",
-            "tw": "cmacmillanmarin"
-        },
-        "routes": {
-            "home": "/",
-            "dynamic": "/dynamic",
-            "webgl": "/webgl",
-            "three": "/three"
-        },
-        "langs": [
-            "en",
-            "es"
-        ]
+  "config": {
+    "head": {
+      "title": "Nuxt Starter | ",
+      "description": "Default Nuxt Starter Description",
+      "fb": "cmacmillanmarin",
+      "tw": "cmacmillanmarin"
     },
-    "header": {
-        "links": [{
-                "route": {
-                    "name": "webgl"
-                },
-                "label": "WebGL"
-            },
-            {
-                "route": {
-                    "name": "three"
-                },
-                "label": "Three js"
-            },
-            {
-                "route": {
-                    "name": "dynamic",
-                    "params": {
-                        "slug": "random-slug"
-                    }
-                },
-                "label": "Dynamic"
-            }
-        ]
+    "routes": {
+      "home": "/",
+      "dynamic": "/dynamic",
+      "webgl": "/webgl",
+      "three": "/three"
     },
-    "pages": {
-        "home": {
-            "head": {
-                "title": "Home",
-                "description": "Home Description"
-            },
-            "images": [
-                "static-img-base",
-                "static-img-base64"
-            ]
+    "langs": [
+      "en",
+      "es"
+    ]
+  },
+  "header": {
+    "links": [
+      {
+        "route": {
+          "name": "webgl"
         },
-        "webgl": {
-            "head": {
-                "title": "WebGL",
-                "description": "WebGL Description"
-            },
-            "image": "static-img-base64"
+        "label": "WebGL"
+      },
+      {
+        "route": {
+          "name": "three"
         },
-        "three": {
-            "head": {
-                "title": "Three js",
-                "description": "Three js Description"
-            },
-            "image": "static-img-base64"
-        }
+        "label": "Three js"
+      },
+      {
+        "route": {
+          "name": "dynamic",
+          "params": {
+            "slug": "random-slug"
+          }
+        },
+        "label": "Dynamic"
+      }
+    ]
+  },
+  "pages": {
+    "home": {
+      "head": {
+        "title": "Home",
+        "description": "Home Description"
+      },
+      "images": [
+        "static-img-base",
+        "static-img-base64"
+      ]
     },
-    "assets": {
-        "static-img-base": {
-            "src": "base.jpg",
-            "alt": "base",
-            "ratio": "1x1"
-        },
-        "static-img-base64": {
-            "src": "base64.jpg",
-            "alt": "base64",
-            "ratio": "1x1"
-        }
+    "webgl": {
+      "head": {
+        "title": "WebGL",
+        "description": "WebGL Description"
+      },
+      "image": "static-img-base64"
+    },
+    "three": {
+      "head": {
+        "title": "Three js",
+        "description": "Three js Description"
+      },
+      "image": "static-img-base64"
     }
+  },
+  "assets": {
+    "static-img-base": {
+      "src": "base.jpg",
+      "alt": "base",
+      "ratio": "1x1"
+    },
+    "static-img-base64": {
+      "src": "base64.jpg",
+      "alt": "base64",
+      "ratio": "1x1"
+    }
+  }
 }

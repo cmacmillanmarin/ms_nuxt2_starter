@@ -31,45 +31,39 @@ export default {
     },
     methods: {
         async init() {
-            const {
-                Renderer,
-                OrthographicCamera,
-                Scene,
-                Material,
-                Mesh,
-                PlaneBufferGeometry
-            } = this.$core.webgl;
-            const img = await this.$core.loader.loadAsset(this.getImageSourceFromObject(this.image, 500));
+            const worker = this.$core.loader.new();
+            worker.postMessage({type: "asset", asset: this.getImageSourceFromObject(this.image, 500)});
+            worker.addEventListener("message", (event)=>{ console.log("component", event.data)});
 
-            this.scene = new Scene();
-            this.renderer = new Renderer({canvas: this.$el, alpha: true, depth: false, stencil: false, premultipliedAlpha: false});
-            this.renderer._clearColor = [1.0, 1.0, 1.0, 0.0];
-            this.camera = new OrthographicCamera(-1, 1, 1, -1, 0.1, 1000);
-            this.camera.scale.y *= -1;
+            // this.scene = new Scene();
+            // this.renderer = new Renderer({canvas: this.$el, alpha: true, depth: false, stencil: false, premultipliedAlpha: false});
+            // this.renderer._clearColor = [1.0, 1.0, 1.0, 0.0];
+            // this.camera = new OrthographicCamera(-1, 1, 1, -1, 0.1, 1000);
+            // this.camera.scale.y *= -1;
 
-            this.plane = new Mesh(
-                new PlaneBufferGeometry(1, 1, 128, 128),
-                new Material({
-                    vertexShader: VS,
-                    fragmentShader: FS,
-                    uniforms: {
-                        img: {type: "t", value: img}
-                    },
-                    transparent: true
-                })
-            );
-            const scale = {x: 500, y: 500};
-            const position = {x: 0, y: 0};
-            this.plane.scale.x = scale.x;
-            this.plane.scale.y = scale.y;
-            const {x, y} = this.canvasPositionFrom(position, scale, this.viewportSize);
-            console.log(`Position from screen to canvas available -> 0, 0 = ${x}, ${y}`);
-            this.plane.position.x = 0;
-            this.plane.position.y = 0;
-            this.plane.position.z = -1;
-            this.scene.add(this.plane);
+            // this.plane = new Mesh(
+            //     new PlaneBufferGeometry(1, 1, 128, 128),
+            //     new Material({
+            //         vertexShader: VS,
+            //         fragmentShader: FS,
+            //         uniforms: {
+            //             img: {type: "t", value: new Image()}
+            //         },
+            //         transparent: true
+            //     })
+            // );
+            // const scale = {x: 500, y: 500};
+            // const position = {x: 0, y: 0};
+            // this.plane.scale.x = scale.x;
+            // this.plane.scale.y = scale.y;
+            // const {x, y} = this.canvasPositionFrom(position, scale, this.viewportSize);
+            // console.log(`Position from screen to canvas available -> 0, 0 = ${x}, ${y}`);
+            // this.plane.position.x = 0;
+            // this.plane.position.y = 0;
+            // this.plane.position.z = -1;
+            // this.scene.add(this.plane);
 
-            this.updateSize();
+            // this.updateSize();
         },
         updateSize() {
             const {w, h} = this.viewportSize;

@@ -30,51 +30,15 @@ export default {
         })
     },
     methods: {
-        async init() {
+        init() {
             if (!window.THREE) {
-                console.log("load three!", window.THREE);
-                await this.$core.loader.library("https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js");
-                console.log("three loaded!", window.THREE);
-            } else {
-                // const {
-                //     Renderer,
-                //     OrthographicCamera,
-                //     Scene,
-                //     Material,
-                //     Mesh,
-                //     PlaneBufferGeometry
-                // } = window.THREE;
-                // const img = await this.$core.loader.loadAsset(this.getImageSourceFromObject(this.image, 500));
-
-                // this.scene = new Scene();
-                // this.renderer = new Renderer({canvas: this.$el, alpha: true, depth: false, stencil: false, premultipliedAlpha: false});
-                // this.renderer._clearColor = [1.0, 1.0, 1.0, 0.0];
-                // this.camera = new OrthographicCamera(-1, 1, 1, -1, 0.1, 1000);
-                // this.camera.scale.y *= -1;
-
-                // this.plane = new Mesh(
-                //     new PlaneBufferGeometry(1, 1, 128, 128),
-                //     new Material({
-                //         vertexShader: VS,
-                //         fragmentShader: FS,
-                //         uniforms: {
-                //             img: {type: "t", value: img}
-                //         },
-                //         transparent: true
-                //     })
-                // );
-                // const scale = {x: 500, y: 500};
-                // const position = {x: 0, y: 0};
-                // this.plane.scale.x = scale.x;
-                // this.plane.scale.y = scale.y;
-                // const {x, y} = this.canvasPositionFrom(position, scale, this.viewportSize);
-                // console.log(`Position from screen to canvas available -> 0, 0 = ${x}, ${y}`);
-                // this.plane.position.x = 0;
-                // this.plane.position.y = 0;
-                // this.plane.position.z = -1;
-                // this.scene.add(this.plane);
-                // this.updateSize();
+                this.$core.loader.worker.postMessage({ type: "library", src: "https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js" });
+                this.$core.loader.worker.onmessage = this.loaded.bind(this);
             }
+        },
+        loaded(event) {
+            const {data} = event;
+            console.log("Component", data);
         },
         updateSize() {
             // const {w, h} = this.viewportSize;

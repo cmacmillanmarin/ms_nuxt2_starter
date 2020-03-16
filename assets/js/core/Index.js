@@ -14,17 +14,17 @@ import * as WebGL from "./webgl/index";
 
 export default class Core {
     constructor(Content) {
-        this.content = Content;
-        this.loader = Loader;
-        this.swipe = Swipe;
-        this.pinch = Pinch;
         this.tap = Tap;
         this.pan = Pan;
-        this.events = new Events();
-        this.tween = Tween;
+        this.swipe = Swipe;
+        this.pinch = Pinch;
         this.ease = Ease;
+        this.tween = Tween;
         this.utils = Utils;
         this.webgl = WebGL;
+        this.events = new Events();
+        this.loader = new Loader();
+        this.content = Content;
         process.browser && this.mount();
     }
 

@@ -58,6 +58,10 @@ export default {
         {
             src: "~/plugins/Store.js",
             ssr: false
+        },
+        {
+            src: "~/plugins/Worker.js",
+            ssr: false
         }
     ],
 
@@ -134,15 +138,7 @@ export default {
                 }
             }
         },
-        extend(config, ctx) {
-            if (ctx.isDev && ctx.isClient) {
-                config.module.rules.push({
-                    enforce: "pre",
-                    test: /\.(js|vue)$/,
-                    loader: "eslint-loader",
-                    exclude: /(node_modules)/
-                });
-            }
+        extend(config, {isDev, isClient}) {
             config.module.rules.push({
                 test: /\.(glsl|vs|fs|vert|frag)$/,
                 exclude: /(node_modules)/,
@@ -151,7 +147,15 @@ export default {
                   "glslify-loader"
                 ]
             });
-            config.module.rules.push({ test: /\.worker\.js$/, loader: 'worker-loader'});
+            config.output.globalObject = "this"
+
+            if (isClient) { // web workers are only available client-side
+                config.module.rules.push({
+                    test: /\.worker\.js$/, // this will pick up all .js files that ends with ".worker.js"
+                    loader: 'worker-loader',
+                    exclude: /(node_modules)/
+                })
+            }
         }
     },
 
