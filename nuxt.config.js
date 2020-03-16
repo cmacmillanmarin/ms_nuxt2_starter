@@ -102,8 +102,8 @@ export default {
     },
 
     manifest: {
-        name: "Carolina Herrera",
-        short_name: "Carolina Herrera",
+        name: "Nuxt Starter",
+        short_name: "Nuxt Starter",
         description: "Ad ullamco irure consectetur commodo cillum culpa tempor ea ipsum. Proident incididunt consequat velit irure deserunt ex non nulla id irure esse. Aliquip ipsum nostrud est minim exercitation incididunt sunt voluptate adipisicing minim consequat.",
         lang: `${Lang}`,
         orientation: "portrait-primary",
