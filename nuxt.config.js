@@ -148,7 +148,6 @@ export default {
                 ]
             });
             config.output.globalObject = "this"
-
             if (isClient) { // web workers are only available client-side
                 config.module.rules.push({
                     test: /\.worker\.js$/, // this will pick up all .js files that ends with ".worker.js"
