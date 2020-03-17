@@ -20,6 +20,7 @@ self.addEventListener("message", async event =>{
             break;
         default:
             self.postMessage("Type not found!");
+            self.close();
             break;
     }
 });

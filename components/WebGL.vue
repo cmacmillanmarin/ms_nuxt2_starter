@@ -31,14 +31,15 @@ export default {
     },
     methods: {
         init() {
-            const worker = this.$core.loader.new();
-            worker.postMessage({type: "img", src: this.getImageSourceFromObject(this.image, 500)});
-            worker.addEventListener("message", (e)=>{
+            this._worker = this.$core.loader.new();
+            this._worker.postMessage({type: "img", src: this.getImageSourceFromObject(this.image, 500)});
+            this._worker.addEventListener("message", (e)=>{
                 const {src} = e.data;
                 this._img = new Image();
                 this._img.onload = ()=>{
                     this.start();
                     URL.revokeObjectURL(src);
+                    this._worker.terminate();
                 };
                 this._img.src = src;
             });
