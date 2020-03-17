@@ -27,18 +27,33 @@ export default {
         ...mapState({
             viewportSize: state=>state.viewportSize,
             devicePixelRatio: state=>state.devicePixelRatio
-        })
+        }),
+        threeSrc() {
+            return "https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js";
+        }
     },
     methods: {
         init() {
             if (!window.THREE) {
-                this.$core.loader.worker.postMessage({ type: "library", src: "https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js" });
-                this.$core.loader.worker.onmessage = this.loaded.bind(this);
+                const worker = this.$core.loader.new();
+                worker.postMessage({ type: "library", src: this.threeSrc });
+                worker.onmessage = this.loaded.bind(this);
+            } else {
+                this.start();
             }
         },
         loaded(event) {
-            const {data} = event;
-            console.log("Component", data);
+            const {ok} = event.data;
+            if (ok) {
+                const script = document.createElement("script");
+                script.type = "text/javascript";
+                script.src = this.threeSrc;
+                document.body.appendChild(script);
+                script.onload = this.start.bind(this);
+            }
+        },
+        start() {
+            console.log(window.THREE);
         },
         updateSize() {
             // const {w, h} = this.viewportSize;

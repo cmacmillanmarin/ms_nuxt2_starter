@@ -9,6 +9,11 @@
                 <div v-for="(img, i) in page.images" :key="i" :class="[`col-${cols}`]">
                     <an-image :data="$core.content.assets[img]" />
                 </div>
+                <div v-for="i in 6" :key="`content-${i}`" class="col-12 content">
+                    <div>
+                        <p v-text="`content ${i}`" />
+                    </div>
+                </div>   
             </div>
         </in-grid>
     </section>
@@ -55,6 +60,17 @@ export default {
 
     .home {
         text-align: center;
+        .content {
+            position: relative;
+            height: 50vh;
+            div {
+                border-top: 1px solid lightgray;
+            }
+            p {
+                position: absolute;
+                @include centerXY();
+            }
+        }
     }
 
 </style>

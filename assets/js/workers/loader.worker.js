@@ -7,8 +7,9 @@ self.addEventListener("message", async event =>{
     const {data} = event;
     switch (data.type) {
         case "library":
-            console.log("Load Library ->", data.src);
-            self.postMessage({src: data.src});
+            const res = await fetch(data.src);
+            const {ok} = res;
+            self.postMessage({ok});
             break;
         case "img":
             const {src} = event.data;
@@ -21,4 +22,5 @@ self.addEventListener("message", async event =>{
             self.postMessage("Type not found!");
             break;
     }
+    self.close();
 });

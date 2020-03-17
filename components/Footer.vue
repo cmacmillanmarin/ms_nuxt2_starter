@@ -25,5 +25,6 @@ export default {
 <style lang="scss">
     footer {
         width: 100%;
+        padding-bottom: 100px;
     }
 </style>

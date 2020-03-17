@@ -79,7 +79,8 @@ export default {
 
     styleResources: {
         scss: [
-            "assets/css/_abs.scss"
+            "assets/css/_variables.scss",
+            "assets/css/_mixins.scss"
         ]
     },
 
@@ -127,7 +128,7 @@ export default {
 
     build: {
         analyze: false,
-        extractCSS: false,
+        extractCSS: true,
         terser: isDev ? false : {
             terserOptions: {
                 output: {
