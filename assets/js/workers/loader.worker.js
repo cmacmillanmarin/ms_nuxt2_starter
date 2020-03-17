@@ -15,12 +15,11 @@ self.addEventListener("message", async event =>{
             const {src} = event.data;
             const response = await fetch(src);
             const blob = await response.blob();
-            const _src = URL.createObjectURL(blob)
+            const _src = URL.createObjectURL(blob);
             self.postMessage({src: _src});
             break;
         default:
             self.postMessage("Type not found!");
             break;
     }
-    self.close();
 });

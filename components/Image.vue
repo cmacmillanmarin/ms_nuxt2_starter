@@ -34,7 +34,19 @@ export default {
             this.onResize();
         },
         onResize() {
-            this.src = this.data.type === "svg" ? this.data.src : this.getImageSourceFromObject(this.data, this.$el.offsetWidth);
+            const src = this.data.type === "svg" ? this.data.src : this.getImageSourceFromObject(this.data, this.$el.offsetWidth);
+            this._worker = this.$core.loader.new();
+            this._worker.postMessage({type: "img", src});
+            this._worker.addEventListener("message", this.onMessage.bind(this));
+        },
+        onMessage(e) {
+            const {src} = e.data;
+            if (this.$refs.img) this.$refs.img.onload = this.onLoaded.bind(this);
+            this.src = src;
+        },
+        onLoaded() {
+            URL.revokeObjectURL(this.src);
+            this._worker.terminate();
         }
     }
 };
