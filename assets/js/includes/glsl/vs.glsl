@@ -9,6 +9,7 @@ uniform float time;
 uniform float progress;
 
 varying vec2 vUv;
+varying float noise;
 
 void main() {
     
@@ -19,6 +20,7 @@ void main() {
     float noiseAmp = 0.15; 
     vec3 noisePos = vec3(pos.x * noiseFreq + time, pos.y, pos.z);
     pos.z += snoise(noisePos) * noiseAmp * progress;
+    noise = pos.z;
 
     gl_Position = pMatrix * mvMatrix * vec4(pos, 1.0);
 }
