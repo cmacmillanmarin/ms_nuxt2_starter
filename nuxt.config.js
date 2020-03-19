@@ -36,10 +36,7 @@ export default {
         generate: Generate,
         baseUrl: BaseUrl,
         routerBase: RouterBase,
-        assetPath: process.env.ASSET_PATH,
-        assetGap: process.env.ASSET_GAP,
-        GA_TRACKING_ID: process.env.GA_TRACKING_ID,
-        GO_TRACKING_ID: process.env.GO_TRACKING_ID,
+        assetGap: process.env.ASSET_GAP
     },
 
     server: {

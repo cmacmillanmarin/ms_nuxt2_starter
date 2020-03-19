@@ -1,5 +1,5 @@
 //
-//  components/types/mixins/Transition.js
+//  mixins/Transition.js
 
 export default {
     transition: {
@@ -11,7 +11,7 @@ export default {
             this.$core.tween({
                 targets: el,
                 opacity: 0,
-                easing: "o2",
+                easing: "o1",
                 duration: 350,
                 complete: ()=>{
                     done();
@@ -24,8 +24,8 @@ export default {
             this.$core.tween({
                 targets: el,
                 opacity: 1,
-                easing: "i2",
-                duration: 350,
+                easing: "i1",
+                duration: 650,
                 complete: ()=>{
                     done();
                     this.$core.events.dispatchEvent(this.$core.events.TRANSITION_ENTER_DONE);

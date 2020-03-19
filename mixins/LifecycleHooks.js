@@ -1,5 +1,5 @@
 //
-//  components/types/mixins/LifecycleHooks.js
+//  mixins/LifecycleHooks.js
 
 export default {
     created() {

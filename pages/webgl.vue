@@ -29,11 +29,3 @@ export default {
 };
 
 </script>
-
-<style lang="scss">
-
-    .webgl {
-        text-align: center;
-    }
-
-</style>

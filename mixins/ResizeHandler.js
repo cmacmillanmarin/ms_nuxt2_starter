@@ -1,5 +1,5 @@
 //
-//  components/types/mixins/ResizeHandler.js
+//  mixins/ResizeHandler.js
 
 import {mapState} from "vuex";
 

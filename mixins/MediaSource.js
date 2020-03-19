@@ -4,8 +4,8 @@
 export default {
     data() {
         return {
-            lastWidth: 400,
-            gapChangeImage: 400
+            lastWidth: parseInt(process.env.assetGap),
+            gapChangeImage: parseInt(process.env.assetGap)
         };
     },
     methods: {

@@ -1,9 +1,9 @@
 //
-//  components/types/mixins/Head.js
+//  mixins/Head.js
 
 export default {
     head() {
-        const lang = "en";
+        const lang = process.env.lang;
         const baseUrl = process.env.baseUrl;
         const {title, googleUser, fb, tw} = this.$core.content.config.head;
         const __twImage = `${baseUrl}/img/share_twitter.jpg`;
