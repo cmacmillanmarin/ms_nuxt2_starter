@@ -49,15 +49,11 @@ export default {
 
     plugins: [
         {
-            src: "~/plugins/Core.js",
+            src: "~/plugins/Server.js",
             ssr: true
         },
         {
-            src: "~/plugins/Store.js",
-            ssr: false
-        },
-        {
-            src: "~/plugins/Worker.js",
+            src: "~/plugins/Client.js",
             ssr: false
         }
     ],

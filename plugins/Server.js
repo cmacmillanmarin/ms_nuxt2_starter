@@ -1,5 +1,5 @@
 //
-// plugins/Core.js
+// plugins/Server.js
 
 import Core from "assets/js/core/Index";
 const Content = require(`~/data/${process.env.lang}.json`);

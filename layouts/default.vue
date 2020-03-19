@@ -3,7 +3,7 @@
 -->
 
 <template>
-    <div class="__content">
+    <div>
         <the-header />
         <nuxt />
         <the-footer />

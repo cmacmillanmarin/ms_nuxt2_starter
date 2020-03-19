@@ -1,8 +1,9 @@
 //
-// plugins/Worker.js
+// plugins/Client.js
 
 const Worker = require("~/assets/js/workers/loader.worker.js");
 
-export default ({$core}) => {
+export default ({store, $core})=>{
+    store.dispatch("init");
     $core.loader.set(Worker);
 };
