@@ -1,6 +1,6 @@
 s<template>
     <div :class="`image r${data.ratio}`">
-        <img ref="img" :src="src" :alt="data.alt">
+        <img :data-src="data.src" :alt="data.alt">
     </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
     props: {
         data: {
             type: Object,
-            default: ()=>{ return {src: "", alt: "", type: "", ratio: ""}; }
+            default: ()=>{ return {src: "", alt: "", ratio: ""}; }
         }
     },
     data() {
@@ -25,28 +25,43 @@ export default {
         };
     },
     watch: {
-        data() {
-            this.onResize();
+        src() {
+            this.loadSrc();
         }
     },
     methods: {
         init() {
-            this.onResize();
+            this._img = this.$el.querySelector("img");
+            this._onMessage = this.onMessage.bind(this);
+            this.updateSrc();
         },
         onResize() {
-            const src = this.data.type === "svg" ? this.data.src : this.getImageSourceFromObject(this.data, this.$el.offsetWidth);
-            this._worker = this.$core.loader.new();
-            this._worker.postMessage({type: "img", src});
-            this._worker.addEventListener("message", this.onMessage.bind(this));
+            this.updateSrc();
+        },
+        updateSrc() {
+            this.src = this.getImageSourceFromObject(this.data, this.$el.offsetWidth);
+        },
+        async loadSrc() {
+            this._loader = await this.$core.loader.get();
+            this._loader.worker.postMessage({index: this._loader.index, type: "img", src: this.src});
+            this._loader.worker.addEventListener("message", this._onMessage);
         },
         onMessage(e) {
             const {src} = e.data;
-            if (this.$refs.img) this.$refs.img.onload = this.onLoaded.bind(this);
-            this.src = src;
+            if (!src) return;
+            if (this._loaded) {
+                this._img.remove();
+                this._img = new Image();
+                this._img.alt = this.data.alt;
+            }
+            this._img.src = src;
+            this._img.decode().then(this.onLoaded.bind(this));
+            this._loader.worker.removeEventListener("message", this._onMessage);
         },
         onLoaded() {
             URL.revokeObjectURL(this.src);
-            this._worker.terminate();
+            this._loaded && this.$el.appendChild(this._img);
+            this._loaded = true;
         }
     }
 };
@@ -58,7 +73,6 @@ export default {
     .image {
         position: relative;
         font-size: 0;
-        will-change: opacity;
         img {
             width: 100%;
             display: block;

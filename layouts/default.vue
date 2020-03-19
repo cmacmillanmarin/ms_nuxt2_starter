@@ -33,7 +33,9 @@ export default {
         enter() {},
         entered() {},
         leave() {},
-        reset() {},
+        reset() {
+            this.$core.loader.clean();
+        },
         addListeners() {
             this.enterHandler = this.enter.bind(this);
             this.enteredHandler = this.entered.bind(this);

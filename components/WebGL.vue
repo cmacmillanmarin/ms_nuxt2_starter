@@ -30,19 +30,20 @@ export default {
         })
     },
     methods: {
-        init() {
-            this._worker = this.$core.loader.new();
-            this._worker.postMessage({type: "img", src: this.getImageSourceFromObject(this.image, 500)});
-            this._worker.addEventListener("message", (e)=>{
-                const {src} = e.data;
-                this._img = new Image();
-                this._img.onload = ()=>{
-                    this.start();
-                    URL.revokeObjectURL(src);
-                    this._worker.terminate();
-                };
-                this._img.src = src;
-            });
+        async init() {
+            this._onMessage = this.onMessage.bind(this);
+            this._loader = await this.$core.loader.get();
+            this._loader.worker.postMessage({index: this._loader.index, type: "img", src: this.getImageSourceFromObject(this.image, 500)});
+            this._loader.worker.addEventListener("message", this._onMessage);
+        },
+        async onMessage(e) {
+            const {src} = e.data;
+            this._img = new Image();
+            this._img.src = src;
+            await this._img.decode();
+            this.start();
+            URL.revokeObjectURL(src);
+            this._loader.worker.removeEventListener("message", this._onMessage);
         },
         start() {
             const {

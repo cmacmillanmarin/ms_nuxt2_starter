@@ -4,23 +4,25 @@
 import fetch from "node-fetch";
 
 self.addEventListener("message", async event =>{
-    const {data} = event;
-    switch (data.type) {
+    const {index, type, src} = event.data;
+    switch (type) {
         case "library":
-            const res = await fetch(data.src);
-            const {ok} = res;
-            self.postMessage({ok});
+            const res = await fetch(src);
+            self.postMessage({index, ok: res.ok});
             break;
         case "img":
-            const {src} = event.data;
             const response = await fetch(src);
-            const blob = await response.blob();
-            const _src = URL.createObjectURL(blob);
-            self.postMessage({src: _src});
+            const {ok} = response;
+            if (ok) {
+                const blob = await response.blob();
+                const _src = URL.createObjectURL(blob);
+                self.postMessage({index, src: _src});
+            } else {
+                self.postMessage({index});
+            }     
             break;
         default:
-            self.postMessage("Type not found!");
-            self.close();
+            self.postMessage({index});
             break;
     }
 });

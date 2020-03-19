@@ -33,17 +33,18 @@ export default {
         }
     },
     methods: {
-        init() {
+        async init() {
             if (!window.THREE) {
-                const worker = this.$core.loader.new();
-                worker.postMessage({ type: "library", src: this.threeSrc });
-                worker.onmessage = this.loaded.bind(this);
+                this._onMessage = this.onMessage.bind(this);
+                this._loader = await this.$core.loader.get();
+                this._loader.worker.postMessage({index: this._loader.index, type: "library", src: this.threeSrc});
+                this._loader.worker.addEventListener("message", this._onMessage);
             } else {
                 this.start();
             }
         },
-        loaded(event) {
-            const {ok} = event.data;
+        onMessage(e) {
+            const {ok} = e.data;
             if (ok) {
                 const script = document.createElement("script");
                 script.type = "text/javascript";

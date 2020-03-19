@@ -139,7 +139,7 @@ export default {
                 }
             }
         },
-        extend(config, {isDev, isClient}) {
+        extend(config, {isClient}) {
             config.module.rules.push({
                 test: /\.(glsl|vs|fs|vert|frag)$/,
                 exclude: /(node_modules)/,
