@@ -25,6 +25,7 @@
         "cross-env": "^5.2.0",
         "detect-browser": "^4.1.0",
         "dotenv": "^6.2.0",
+        "glsl-noise": "0.0.0",
         "glslify-loader": "^2.0.0",
         "node-cmd": "^3.0.0",
         "node-fetch": "^2.6.0",

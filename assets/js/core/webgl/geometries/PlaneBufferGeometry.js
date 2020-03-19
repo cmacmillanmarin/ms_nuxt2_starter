@@ -65,7 +65,7 @@ class PlaneBufferGeometry extends BufferGeometry {
         }
         this.index = indices;
         this.setAttribute("position", 3, vertices);
-        this.setAttribute("normal", 3, normals);
+        // this.setAttribute("normal", 3, normals);
         this.setAttribute("uv", 2, uvs);
     }
 }

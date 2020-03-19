@@ -49,7 +49,7 @@ export default {
             const {
                 Scene,
                 Renderer,
-                OrthographicCamera,
+                PerspectiveCamera,
                 Mesh,
                 Material,
                 PlaneBufferGeometry
@@ -58,7 +58,7 @@ export default {
             this.scene = new Scene();
             this.renderer = new Renderer({canvas: this.$el, alpha: true, depth: false, stencil: false, premultipliedAlpha: false});
             this.renderer._clearColor = [1.0, 1.0, 1.0, 0.0];
-            this.camera = new OrthographicCamera(-1, 1, 1, -1, 0.1, 1000);
+            this.camera = new PerspectiveCamera(45, this.viewportSize.w / this.viewportSize.h, 1, 1000);
             this.camera.scale.y *= -1;
 
             this.plane = new Mesh(
@@ -67,12 +67,14 @@ export default {
                     vertexShader: VS,
                     fragmentShader: FS,
                     uniforms: {
-                        img: {type: "t", value: this._img}
+                        img: {type: "t", value: this._img},
+                        time: {type: "f", value: 0},
+                        progress: {type: "f", value: 0}
                     },
                     transparent: true
                 })
             );
-            const scale = {x: 500, y: 500};
+            const scale = {x: 1, y: 1};
             const position = {x: 0, y: 0};
             this.plane.scale.x = scale.x;
             this.plane.scale.y = scale.y;
@@ -80,20 +82,18 @@ export default {
             // const {x, y} = this.canvasPositionFrom(position, scale, this.viewportSize);
             this.plane.position.x = 0;
             this.plane.position.y = 0;
-            this.plane.position.z = -1;
+            this.plane.position.z = -2;
             this.scene.add(this.plane);
 
             this.updateSize();
+            this.$core.events.addEventListener(this.$core.events.RAF, this.render);
+            this.$core.tween({targets: this.plane.material.uniforms.progress, value: 1, easing: "o1", duration: 1500, delay: 500});
         },
         updateSize() {
             const {w, h} = this.viewportSize;
-            this.camera.left = w / -2;
-            this.camera.right = w / 2;
-            this.camera.top = h / 2;
-            this.camera.bottom = h / -2;
+            this.camera.aspect = w / h;
             this.camera.updateProjectionMatrix();
             this.renderer.setSize(w, h);
-            this.render();
         },
         canvasPositionFrom(position, scale, canvasSize) {
             const x = position.x - canvasSize.w * 0.5 + scale.x * 0.5;
@@ -101,10 +101,16 @@ export default {
             return {x, y};
         },
         render(e) {
+            const {now} = e.params;
+            this.plane.material.uniforms.time.value = now * 0.0015;
             this.renderer.render(this.scene, this.camera);
         },
         onResize() {
             this.updateSize();
+        },
+        removeListeners() {
+            this.$core.tween.remove(this.plane.material.uniforms.progress);
+            this.$core.events.removeEventListener(this.$core.events.RAF, this.render);
         }
     }
 };
