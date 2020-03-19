@@ -105,7 +105,7 @@ export default {
     manifest: {
         name: "Nuxt Starter",
         short_name: "Nuxt Starter",
-        description: "Ad ullamco irure consectetur commodo cillum culpa tempor ea ipsum. Proident incididunt consequat velit irure deserunt ex non nulla id irure esse. Aliquip ipsum nostrud est minim exercitation incididunt sunt voluptate adipisicing minim consequat.",
+        description: "Nuxt Starter PWA Ready",
         lang: `${Lang}`,
         orientation: "portrait-primary",
         theme_color: "#ffffff",
@@ -116,7 +116,7 @@ export default {
     },
 
     icon: {
-        iconSrc: "static/img/logo/carolina-herrera-logo.png"
+        iconSrc: "static/img/logo.png"
     },
 
     vue: {
