@@ -3,13 +3,13 @@
 -->
 
 <template>
-    <section class="page home below-header">
+    <section class="page home below-header" data-scroll-section>
         <in-grid>
             <div class="grid">
-                <div v-for="(img, i) in page.images" :key="i" :class="[`col-${cols}`]">
+                <div v-for="(img, i) in page.images" :key="i" :class="[`col-${cols}`]" data-scroll>
                     <an-image :data="$core.content.assets[img]" />
                 </div>
-                <div v-for="i in 6" :key="`content-${i}`" class="col-12 content">
+                <div v-for="i in 6" :key="`content-${i}`" class="col-12 content" data-scroll>
                     <div>
                         <p v-text="`content ${i}`" />
                     </div>

@@ -3,7 +3,7 @@
 -->
 
 <template>
-    <footer>
+    <footer data-scroll-section>
         <in-grid>
             Footer
         </in-grid>
