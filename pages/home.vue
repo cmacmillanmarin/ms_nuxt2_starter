@@ -16,6 +16,7 @@
                 </div>   
             </div>
         </in-grid>
+        <the-footer data-scroll />
     </section>
 </template>
 
@@ -31,13 +32,15 @@ import ResponsiveTemplate from "~/mixins/ResponsiveTemplate";
 import InGrid from "~/components/InGrid";
 import AnImage from "~/components/Image";
 import AdaButton from "~/components/ADAButton";
+import TheFooter from "~/components/Footer";
 
 export default {
     name: "Home",
     components: {
         AnImage,
         InGrid,
-        AdaButton
+        AdaButton,
+        TheFooter
     },
     mixins: [Head, LifecycleHooks, Transitions, ResponsiveTemplate],
     computed: {

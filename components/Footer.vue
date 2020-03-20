@@ -3,7 +3,7 @@
 -->
 
 <template>
-    <footer data-scroll-section>
+    <footer>
         <in-grid>
             Footer
         </in-grid>
@@ -25,6 +25,10 @@ export default {
 <style lang="scss">
     footer {
         width: 100%;
-        padding-bottom: 100px;
+        background: black;
+        .in-grid-layout {
+            color: white;
+            padding-bottom: 100px;
+        }
     }
 </style>

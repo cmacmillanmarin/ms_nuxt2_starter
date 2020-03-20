@@ -6,7 +6,6 @@
     <div data-scroll-container>
         <the-header />
         <nuxt />
-        <the-footer />
         <debug-grid />
     </div>
 </template>
@@ -19,45 +18,48 @@ import LifecycleHooks from "~/mixins/LifecycleHooks";
 import ResponsiveTemplate from "~/mixins/ResponsiveTemplate";
 
 import TheHeader from "~/components/Header";
-import TheFooter from "~/components/Footer";
 import DebugGrid from "~/components/DebugGrid";
 
 export default {
     name: "Default",
     components: {
         TheHeader,
-        TheFooter,
         DebugGrid
     },
     mixins: [LifecycleHooks, ResponsiveTemplate],
     computed: {
         ...mapState({
+            scrollPoint: state=>state.scroll.point,
             scrollEnabled: state=>state.scroll.enabled
         })
     },
     watch: {
         scrollEnabled() {
             this.scrollEnabled ? this.scroll.start() : this.scroll.stop();
+            this.scroll.update();
         }
     },
     methods: {
         init() {
             this.scroll = new this.$scroll({
                 el: this.$el,
-                smooth: true
+                smooth: true,
+                getDirection: true
             });
             this.scroll.stop();
         },
         onScroll(e) {
-            // console.log(e);
+            const {scroll, limit, direction} = e;
+            const {y} = scroll;
+            this.updateScroll({y, limit, direction});
         },
         enter() {},
         entered() {
-            this.scroll.update();
+            // this.scroll.update();
         },
         leave() {},
         reset() {
-            this.scroll.scrollTo("top");
+            // this.scrollPoint !== 0 && this.scroll.scrollTo("top");
             this.setScrollEnabled(false);
             this.$core.loader.clean();
         },
@@ -83,6 +85,7 @@ export default {
             this.scroll.destroy();
         },
         ...mapMutations({
+            updateScroll: "scroll/updateScroll",
             setScrollEnabled: "scroll/setEnabled"
         })
     }
