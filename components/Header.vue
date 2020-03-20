@@ -57,7 +57,6 @@ export default {
         z-index: 10;
         font-size: 14px;
         z-index: 9;
-        background: white;
     }
 
 </style>
