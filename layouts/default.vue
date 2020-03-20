@@ -13,6 +13,8 @@
 
 <script>
 
+import {mapState, mapMutations} from "vuex";
+
 import LifecycleHooks from "~/mixins/LifecycleHooks";
 import ResponsiveTemplate from "~/mixins/ResponsiveTemplate";
 
@@ -28,25 +30,35 @@ export default {
         DebugGrid
     },
     mixins: [LifecycleHooks, ResponsiveTemplate],
+    computed: {
+        ...mapState({
+            scrollEnabled: state=>state.scroll.enabled
+        })
+    },
+    watch: {
+        scrollEnabled() {
+            this.scrollEnabled ? this.scroll.start() : this.scroll.stop();
+        }
+    },
     methods: {
         init() {
             this.scroll = new this.$scroll({
                 el: this.$el,
                 smooth: true
             });
+            this.scroll.stop();
         },
         onScroll(e) {
-            console.log(e);
+            // console.log(e);
         },
         enter() {},
         entered() {
             this.scroll.update();
-            this.scroll.start();
         },
         leave() {},
         reset() {
             this.scroll.scrollTo("top");
-            this.scroll.stop();
+            this.setScrollEnabled(false);
             this.$core.loader.clean();
         },
         addListeners() {
@@ -69,7 +81,10 @@ export default {
             this.$core.removeListeners();
             this.scroll.off("scroll", this.onScrollHandler);
             this.scroll.destroy();
-        }
+        },
+        ...mapMutations({
+            setScrollEnabled: "scroll/setEnabled"
+        })
     }
 };
 

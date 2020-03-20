@@ -11,7 +11,7 @@
                 </div>
                 <div v-for="i in 6" :key="`content-${i}`" class="col-12 content" data-scroll>
                     <div>
-                        <p v-text="`content ${i}`" />
+                        <ada-button>Button {{i}}</ada-button>
                     </div>
                 </div>   
             </div>
@@ -21,6 +21,8 @@
 
 <script>
 
+import {mapMutations} from "vuex";
+
 import Head from "~/mixins/Head";
 import Transitions from "~/mixins/Transitions";
 import LifecycleHooks from "~/mixins/LifecycleHooks";
@@ -28,12 +30,14 @@ import ResponsiveTemplate from "~/mixins/ResponsiveTemplate";
 
 import InGrid from "~/components/InGrid";
 import AnImage from "~/components/Image";
+import AdaButton from "~/components/ADAButton";
 
 export default {
     name: "Home",
     components: {
         AnImage,
-        InGrid
+        InGrid,
+        AdaButton
     },
     mixins: [Head, LifecycleHooks, Transitions, ResponsiveTemplate],
     computed: {
@@ -49,8 +53,19 @@ export default {
     methods: {
         setInitValue() {},
         init() {},
-        addListeners() {},
-        removeListeners() {}
+        entered() {
+            this.setScrollEnabled(true);
+        },
+        addListeners() {
+            this.enteredHandler = this.entered.bind(this);
+            this.$core.events.addEventListener(this.$core.events.TRANSITION_ENTER_DONE, this.enteredHandler);
+        },
+        removeListeners() {
+            this.$core.events.removeEventListener(this.$core.events.TRANSITION_ENTER_DONE, this.enteredHandler);
+        },
+        ...mapMutations({
+            setScrollEnabled: "scroll/setEnabled"
+        })
     }
 };
 
@@ -66,7 +81,8 @@ export default {
             div {
                 border-top: 1px solid lightgray;
             }
-            p {
+            button {
+                font-size: 14px;
                 position: absolute;
                 @include centerXY();
             }

@@ -2,7 +2,7 @@
 // store/scroll.js
 
 export const state = ()=>({
-    active: false,
+    enabled: false,
     point: 0,
     direction: 1,
     progress: 0,
@@ -18,8 +18,8 @@ export const state = ()=>({
 });
 
 export const mutations = {
-    setActive(state, value) {
-        state.active = value;
+    setEnabled(state, value) {
+        state.enabled = value;
     },
     setPoint(state, point) {
         state.point = point;
