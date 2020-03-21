@@ -54,12 +54,9 @@ export default {
             this.updateScroll({y, limit, direction});
         },
         enter() {},
-        entered() {
-            // this.scroll.update();
-        },
+        entered() {},
         leave() {},
         reset() {
-            // this.scrollPoint !== 0 && this.scroll.scrollTo("top");
             this.setScrollEnabled(false);
             this.$core.loader.clean();
         },

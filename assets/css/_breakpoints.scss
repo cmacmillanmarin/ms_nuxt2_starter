@@ -1,16 +1,6 @@
 //
 // assets/css/layout/_breakpoints.scss
 
-$grid-breakpoints: (
-    mobile-p: 0px,
-    mobile-l: 576px,
-    tablet: 768px,
-    desktop-s: 992px,
-    desktop-m: 1201px,
-    desktop-l: 1441px,
-    desktop-xl: 1681px
-);
-
 body {
     &::after {
         display: none;

@@ -21,11 +21,22 @@ $desktop_margin: 30px;
 
 $padding-in-grid-layout: (
     mobile-p: 20px,
+    mobile-l: 20px,
     tablet: 40px,
     desktop-s: 60px,
     desktop-m: 80px,
     desktop-l: 80px,
     desktop-xl: 100px
+);
+
+$breakpoints: (
+    mobile-p: 0px,
+    mobile-l: 576px,
+    tablet: 768px,
+    desktop-s: 992px,
+    desktop-m: 1201px,
+    desktop-l: 1441px,
+    desktop-xl: 1681px
 );
 
 @function in-grid-layout($key) {

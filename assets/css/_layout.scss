@@ -4,7 +4,7 @@
 .in-view-layout {
     position: relative;
     @include for-breakpoint("desktop-xl") {
-        padding: 0px calc((100vw - #{$grid-breakpoints(desktop-xl)}) * 0.5);
+        padding: 0px calc((100vw - breakpoints(desktop-xl)) * 0.5);
     }
 }
 

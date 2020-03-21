@@ -93,12 +93,12 @@
 // https://github.com/twbs/bootstrap/blob/master/scss/mixins/_breakpoints.scss
 
 // Breakpoint viewport sizes and media queries.
-@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+@function breakpoint-min($name, $breakpoints: $breakpoints) {
     $min: map-get($breakpoints, $name);
     @return if($min != 0, $min, null);
 }
 
-@mixin for-breakpoint($name, $breakpoints: $grid-breakpoints) {
+@mixin for-breakpoint($name, $breakpoints: $breakpoints) {
     $min: breakpoint-min($name, $breakpoints);
     @if $min {
         @media (min-width: $min) {
