@@ -29,11 +29,3 @@ export default {
 };
 
 </script>
-
-<style lang="scss">
-
-    .threejs {
-        text-align: center;
-    }
-
-</style>

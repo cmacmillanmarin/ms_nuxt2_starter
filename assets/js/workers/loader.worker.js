@@ -7,16 +7,16 @@ self.addEventListener("message", async event =>{
     const {index, type, src} = event.data;
     switch (type) {
         case "library":
-            const res = await fetch(src);
-            self.postMessage({index, ok: res.ok});
+            const library = await fetch(src);
+            self.postMessage({index, type, src, ok: library.ok});
             break;
         case "img":
-            const response = await fetch(src);
-            const {ok} = response;
+            const img = await fetch(src);
+            const {ok} = img;
             if (ok) {
-                const blob = await response.blob();
+                const blob = await img.blob();
                 const _src = URL.createObjectURL(blob);
-                self.postMessage({index, src: _src});
+                self.postMessage({index, type, src: _src});
             } else {
                 self.postMessage({index});
             }     

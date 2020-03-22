@@ -10,9 +10,6 @@
 
 import {mapState} from "vuex";
 
-// import VS from "~/assets/js/includes/glsl/vs.glsl";
-// import FS from "~/assets/js/includes/glsl/fs.glsl";
-
 import MediaSource from "~/mixins/MediaSource";
 import ResizeHandler from "~/mixins/ResizeHandler";
 import LifecycleHooks from "~/mixins/LifecycleHooks";
@@ -25,65 +22,113 @@ export default {
     },
     computed: {
         ...mapState({
-            viewportSize: state=>state.viewportSize,
-            devicePixelRatio: state=>state.devicePixelRatio
+            vs: state=>state.viewportSize,
+            dpr: state=>state.devicePixelRatio
         }),
-        threeSrc() {
-            return "https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js";
+        preload() {
+            return [
+                {type: "library", src: "https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"},
+                {type: "library", src: "https://threejs.org/examples/js/controls/OrbitControls.js"},
+                {type: "img", src: `${process.env.baseUrl}/img/Tokyo.jpg`}
+            ];
         }
     },
     methods: {
         async init() {
-            if (!window.THREE) {
-                this._onMessage = this.onMessage.bind(this);
-                this._loader = await this.$core.loader.get();
-                this._loader.worker.postMessage({index: this._loader.index, type: "library", src: this.threeSrc});
-                this._loader.worker.addEventListener("message", this._onMessage);
-            } else {
-                this.start();
-            }
+            this._loaded = 0;
+            this._onMessage = this.onMessage.bind(this);
+            this._loader = await this.$core.loader.get();
+            this._loader.worker.postMessage({index: this._loader.index, ...this.preload[this._loaded]});
+            this._loader.worker.addEventListener("message", this._onMessage);
         },
-        onMessage(e) {
-            const {ok} = e.data;
-            if (ok) {
+        async onMessage(e) {
+            const {type, src} = e.data
+            if (type === "library") {
                 const script = document.createElement("script");
                 script.type = "text/javascript";
-                script.src = this.threeSrc;
+                script.src = src;
                 document.body.appendChild(script);
-                script.onload = this.start.bind(this);
+                script.onload = this.onLoaded.bind(this);
+            } else if (type === "img") {
+                this._img = new Image();
+                this._img.src = src;
+                await this._img.decode();
+                URL.revokeObjectURL(src);
+                this.onLoaded();
+            }            
+        },
+        onLoaded() {
+            this._loaded++;
+            if (this._loaded === this.preload.length) {
+                this._loader.worker.removeEventListener("message", this._onMessage); 
+                this.start();
+            } else {
+                this._loader.worker.postMessage({index: this._loader.index, ...this.preload[this._loaded]});
             }
         },
         start() {
-            console.log(window.THREE);
-        },
-        updateSize() {
-            // const {w, h} = this.viewportSize;
-            // this.camera.left = w / -2;
-            // this.camera.right = w / 2;
-            // this.camera.top = h / 2;
-            // this.camera.bottom = h / -2;
-            // this.camera.updateProjectionMatrix();
-            // this.renderer.setSize(w, h);
-            // this.render();
+            const {
+                Scene,
+                PerspectiveCamera,
+                WebGLRenderer,
+                PlaneBufferGeometry,
+                MeshBasicMaterial,
+                Mesh,
+                DoubleSide,
+                Vector3,
+                OrbitControls
+            } = THREE;
+
+            this.scene = new Scene();
+
+            this.renderer = new WebGLRenderer({canvas: this.$el, alpha: true});
+            this.renderer.setClearColor(0x000000, 0);
+			this.renderer.setPixelRatio(this.dpr);
+			this.renderer.setSize(this.vs.w, this.vs.h);
+
+            this.camera = new PerspectiveCamera(45, this.vs.w / this.vs.h , 1, 1000);
+            this.camera.position.set(0, 0, 200);
+
+            this.controls = new OrbitControls(this.camera, this.$el);
+
+            this.plane = new Mesh(
+                new PlaneBufferGeometry(0.5, 0.7, 16, 16),
+                new MeshBasicMaterial({
+                    color: 0x000000, 
+                    side: DoubleSide,
+                    wireframe: true,
+                })
+            );
+            this.plane.scale.x = 100;
+            this.plane.scale.y = 100;
+            this.scene.add(this.plane);
+
+            this.renderHandler = this.render.bind(this);
+            this.$core.events.addEventListener(this.$core.events.RAF, this.renderHandler);
         },
         render(e) {
-            // this.renderer.render(this.scene, this.camera);
+            this.controls.update();
+            this.renderer.render(this.scene, this.camera);
         },
         onResize() {
-            // this.updateSize();
+            const {w, h} = this.vs;
+            this.camera.aspect = w / h;
+            this.camera.updateProjectionMatrix();
+            this.renderer.setSize(w, h);
+        },
+        removeListeners() {
+            this.$core.events.removeEventListener(this.$core.events.RAF, this.renderHandler);
         }
     }
 };
 </script>
 
 <style lang="scss">
-    .webgl {
+    .threejs {
         position: fixed;
         top: 0;
         left: 0;
-        z-index: 99;
         width: 100%;
         height: 100%;
-        pointer-events: none;
     }
 </style>

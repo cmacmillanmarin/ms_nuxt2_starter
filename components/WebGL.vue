@@ -25,8 +25,7 @@ export default {
     },
     computed: {
         ...mapState({
-            viewportSize: state=>state.viewportSize,
-            devicePixelRatio: state=>state.devicePixelRatio
+            vs: state=>state.viewportSize
         })
     },
     methods: {
@@ -58,7 +57,7 @@ export default {
             this.scene = new Scene();
             this.renderer = new Renderer({canvas: this.$el, alpha: true, depth: false, stencil: false, premultipliedAlpha: false});
             this.renderer._clearColor = [1.0, 1.0, 1.0, 0.0];
-            this.camera = new PerspectiveCamera(45, this.viewportSize.w / this.viewportSize.h, 1, 1000);
+            this.camera = new PerspectiveCamera(45, this.vs.w / this.vs.h, 1, 1000);
             this.camera.scale.y *= -1;
 
             this.plane = new Mesh(
@@ -79,7 +78,7 @@ export default {
             this.plane.scale.x = scale.x;
             this.plane.scale.y = scale.y;
             // Position from screen to canvas available
-            // const {x, y} = this.canvasPositionFrom(position, scale, this.viewportSize);
+            // const {x, y} = this.canvasPositionFrom(position, scale, this.vs);
             this.plane.position.x = 0;
             this.plane.position.y = 0;
             this.plane.position.z = -2;
@@ -90,7 +89,7 @@ export default {
             this.$core.tween({targets: this.plane.material.uniforms.progress, value: 1, easing: "o1", duration: 1500, delay: 500});
         },
         updateSize() {
-            const {w, h} = this.viewportSize;
+            const {w, h} = this.vs;
             this.camera.aspect = w / h;
             this.camera.updateProjectionMatrix();
             this.renderer.setSize(w, h);
@@ -121,9 +120,7 @@ export default {
         position: fixed;
         top: 0;
         left: 0;
-        z-index: 99;
         width: 100%;
         height: 100%;
-        pointer-events: none;
     }
 </style>

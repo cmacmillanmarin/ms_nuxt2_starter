@@ -46,7 +46,7 @@ export default {
             this._loader.worker.postMessage({index: this._loader.index, type: "img", src: this.src});
             this._loader.worker.addEventListener("message", this._onMessage);
         },
-        onMessage(e) {
+        async onMessage(e) {
             const {src} = e.data;
             if (!src) return;
             if (this._loaded) {
@@ -55,7 +55,8 @@ export default {
                 this._img.alt = this.data.alt;
             }
             this._img.src = src;
-            this._img.decode().then(this.onLoaded.bind(this));
+            await this._img.decode();
+            this.onLoaded();
             this._loader.worker.removeEventListener("message", this._onMessage);
         },
         onLoaded() {
