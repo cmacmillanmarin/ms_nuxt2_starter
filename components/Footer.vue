@@ -28,7 +28,7 @@ export default {
         background: black;
         .in-grid-layout {
             color: white;
-            padding-bottom: 100px;
+            padding: 50px 0 100px;
         }
     }
 </style>

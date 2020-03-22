@@ -2,4 +2,6 @@
 // assets/css/layout/_fonts.scss
 
 // Example via mixin
-// @include importFont('titillium', 'titilliumweb-regular-webfont', 'titillium_webregular');
+@include importFont('neue-machina-light');
+@include importFont('neue-machina-regular');
+@include importFont('neue-machina-bold');

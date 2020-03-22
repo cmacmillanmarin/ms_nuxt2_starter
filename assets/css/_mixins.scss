@@ -1,23 +1,12 @@
 //
 // assets/css/abstracts/mixins.scss
 
-@mixin importFont($fontname, $filename, $isBold: false, $isItalic: false) {
+@mixin importFont($fontname) {
     @font-face {
-        font-family: $fontname; // IE9 Compat Modes
-        src: url('~static/fonts/#{$filename}.eot'); // IE6-IE8
-        src: url('~static/fonts/#{$filename}.eot?#iefix') format('embedded-opentype'), // Modern Browsers
-        url('~static/fonts/#{$filename}.woff') format('woff'), // Safari, Android, iOS
-        url('~static/fonts/#{$filename}.ttf') format('truetype'); // Legacy iOS
-        font-display: property;
-        @if $isBold {
-            font-weight: $isBold;
-        }
-        @if $isItalic {
-            font-style: italic;
-        }
-        @else {
-            font-style: normal;
-        }
+        font-family: $fontname;
+        src: url('../../static/fonts/#{$fontname}.woff2') format('woff2'), url('../../static/fonts/#{$fontname}.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
     }
 }
 

@@ -12,6 +12,10 @@
 @import "layout";
 @import "locomotive-scroll";
 
+body {
+    font-family: 'neue-machina-regular', Helvetica, sans-serif;
+}
+
 .page {
     opacity: 0;
     will-change: opacity;
