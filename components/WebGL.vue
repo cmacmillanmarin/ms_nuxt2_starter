@@ -10,8 +10,8 @@
 
 import {mapState} from "vuex";
 
-import VS from "~/assets/js/includes/glsl/vs.glsl";
-import FS from "~/assets/js/includes/glsl/fs.glsl";
+import VS from "~/assets/js/includes/glsl/wave/vs.glsl";
+import FS from "~/assets/js/includes/glsl/wave/fs.glsl";
 
 import MediaSource from "~/mixins/MediaSource";
 import ResizeHandler from "~/mixins/ResizeHandler";
