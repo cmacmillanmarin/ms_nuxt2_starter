@@ -57,7 +57,6 @@ export default {
         position: fixed;
         width: 100%;
         z-index: 10;
-        font-size: 14px;
         padding: 11px 10px 5px;
         @include for-breakpoint("tablet") {
             padding: 11px 0px 5px;

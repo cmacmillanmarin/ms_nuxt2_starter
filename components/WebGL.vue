@@ -3,7 +3,7 @@
 -->
 
 <template>
-    <canvas class="webgl" />
+    <canvas class="c-webgl" />
 </template>
 
 <script>
@@ -21,12 +21,18 @@ export default {
     name: "WebGL",
     mixins: [LifecycleHooks, MediaSource, ResizeHandler],
     props: {
-        image: Object
+        image: Object,
+        effects: Array
     },
     computed: {
         ...mapState({
             vs: state=>state.viewportSize
         })
+    },
+    watch: {
+        effects() {
+            console.log(`Active Effects: ${this.effects}`);
+        }
     },
     methods: {
         async init() {
@@ -116,7 +122,7 @@ export default {
 </script>
 
 <style lang="scss">
-    .webgl {
+    .c-webgl {
         position: fixed;
         top: 0;
         left: 0;

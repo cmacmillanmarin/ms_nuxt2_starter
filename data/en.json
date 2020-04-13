@@ -58,7 +58,17 @@
         "title": "WebGL",
         "description": "WebGL Description"
       },
-      "image": "static-img-base64"
+      "images": ["static-img-base64"],
+      "effects": [{
+        "id": 0,
+        "label": "Waves"
+      }, {
+        "id": 1,
+        "label": "Water"
+      }, {
+        "id": 2,
+        "label": "Slider"
+      }]
     },
     "three": {
       "head": {
