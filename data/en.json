@@ -21,12 +21,6 @@
     "links": [
       {
         "route": {
-          "name": "home"
-        },
-        "label": "Home"
-      },
-      {
-        "route": {
           "name": "webgl"
         },
         "label": "WebGL"
