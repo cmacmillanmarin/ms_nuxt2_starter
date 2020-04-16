@@ -35,8 +35,7 @@ export default {
         head: config.head,
         generate: Generate,
         baseUrl: BaseUrl,
-        routerBase: RouterBase,
-        assetGap: process.env.ASSET_GAP
+        routerBase: RouterBase
     },
 
     server: {

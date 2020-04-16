@@ -6,7 +6,7 @@
     <div data-scroll-container>
         <the-header />
         <nuxt />
-        <debug-grid />
+        <!-- <debug-grid /> -->
     </div>
 </template>
 

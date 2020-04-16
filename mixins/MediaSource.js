@@ -1,18 +1,32 @@
 //
 //  mixins/MediaSource.js
 
+import {mapState} from "vuex";
+
 export default {
+    computed: {
+        ...mapState({
+            vw: state=>state.viewportSize.w
+        })
+    },
     data() {
         return {
-            lastWidth: parseInt(process.env.assetGap),
-            gapChangeImage: parseInt(process.env.assetGap),
-            baseUrl: process.env.baseUrl
+            baseUrl: process.env.baseUrl,
+            availables: [256, 512, 1024, 2048]
         };
     },
     methods: {
-        getImageSourceFromObject({src}, width = parseInt(process.env.assetGap)) {
-            const w = (Math.floor(width / this.gapChangeImage) * this.gapChangeImage) + this.gapChangeImage;
-            return `${this.baseUrl}/img/${w}/${src}`;
+        getImageSourceFromId(id, width) {
+            return this.getImageSourceFromObject(this.$core.content.assets[id], width);
+        },
+        getImageSourceFromObject({src}, width) {
+            const w = width || this.vw;
+            return `${this.baseUrl}/img/${this.getClosest(w)}/${src}`;
+        },
+        getClosest(width) {
+            return this.availables.reduce((prev, curr)=>{
+                return (Math.abs(curr - width) < Math.abs(prev - width) ? curr : prev);
+            });
         }
     }
 };

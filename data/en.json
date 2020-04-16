@@ -49,8 +49,8 @@
         "description": "Home Description"
       },
       "images": [
-        "static-img-base",
-        "static-img-base64"
+        "img-base",
+        "img-base64"
       ]
     },
     "webgl": {
@@ -58,36 +58,152 @@
         "title": "WebGL",
         "description": "WebGL Description"
       },
-      "images": ["static-img-base64"],
-      "effects": [{
-        "id": 0,
-        "label": "Waves"
-      }, {
-        "id": 1,
-        "label": "Water"
-      }, {
-        "id": 2,
-        "label": "Slider"
-      }]
+      "images": [
+        "img-jp-0-webgl",
+        "img-jp-1-webgl",
+        "img-jp-2-webgl",
+        "img-jp-3-webgl",
+        "img-jp-4-webgl",
+        "img-jp-5-webgl",
+        "img-jp-6-webgl",
+        "img-jp-7-webgl",
+        "img-jp-8-webgl",
+        "img-jp-9-webgl"
+      ],
+      "effects": [
+        "waves",
+        "water",
+        "slider"
+      ]
     },
     "three": {
       "head": {
         "title": "Three js",
         "description": "Three js Description"
       },
-      "image": "static-img-base64"
+      "image": "img-base64"
     }
   },
   "assets": {
-    "static-img-base": {
+    "img-base": {
       "src": "base.jpg",
       "alt": "base",
       "ratio": "1x1"
     },
-    "static-img-base64": {
+    "img-base64": {
       "src": "base64.jpg",
       "alt": "base64",
       "ratio": "1x1"
+    },
+    "img-jp-0": {
+      "src": "jp-0.jpg",
+      "alt": "jp-0",
+      "ratio": "1463x2048"
+    },
+    "img-jp-1": {
+      "src": "jp-1.jpg",
+      "alt": "jp-1",
+      "ratio": "1463x2048"
+    },
+    "img-jp-2": {
+      "src": "jp-2.jpg",
+      "alt": "jp-2",
+      "ratio": "1463x2048"
+    },
+    "img-jp-3": {
+      "src": "jp-3.jpg",
+      "alt": "jp-3",
+      "ratio": "1463x2048"
+    },
+    "img-jp-4": {
+      "src": "jp-4.jpg",
+      "alt": "jp-4",
+      "ratio": "1463x2048"
+    },
+    "img-jp-5": {
+      "src": "jp-5.jpg",
+      "alt": "jp-5",
+      "ratio": "1463x2048"
+    },
+    "img-jp-6": {
+      "src": "jp-6.jpg",
+      "alt": "jp-6",
+      "ratio": "1463x2048"
+    },
+    "img-jp-7": {
+      "src": "jp-7.jpg",
+      "alt": "jp-7",
+      "ratio": "1463x2048"
+    },
+    "img-jp-8": {
+      "src": "jp-8.jpg",
+      "alt": "jp-8",
+      "ratio": "1463x2048"
+    },
+    "img-jp-9": {
+      "src": "jp-9.jpg",
+      "alt": "jp-9",
+      "ratio": "1463x2048"
+    },
+    "img-base-webgl": {
+      "src": "base-webgl.jpg",
+      "alt": "base",
+      "ratio": "1x1"
+    },
+    "img-base64-webgl": {
+      "src": "base64-webgl.jpg",
+      "alt": "base64",
+      "ratio": "1x1"
+    },
+    "img-jp-0-webgl": {
+      "src": "jp-0-webgl.jpg",
+      "alt": "jp-0",
+      "ratio": "1463x2048"
+    },
+    "img-jp-1-webgl": {
+      "src": "jp-1-webgl.jpg",
+      "alt": "jp-1",
+      "ratio": "1463x2048"
+    },
+    "img-jp-2-webgl": {
+      "src": "jp-2-webgl.jpg",
+      "alt": "jp-2",
+      "ratio": "1463x2048"
+    },
+    "img-jp-3-webgl": {
+      "src": "jp-3-webgl.jpg",
+      "alt": "jp-3",
+      "ratio": "1463x2048"
+    },
+    "img-jp-4-webgl": {
+      "src": "jp-4-webgl.jpg",
+      "alt": "jp-4",
+      "ratio": "1463x2048"
+    },
+    "img-jp-5-webgl": {
+      "src": "jp-5-webgl.jpg",
+      "alt": "jp-5",
+      "ratio": "1463x2048"
+    },
+    "img-jp-6-webgl": {
+      "src": "jp-6-webgl.jpg",
+      "alt": "jp-6",
+      "ratio": "1463x2048"
+    },
+    "img-jp-7-webgl": {
+      "src": "jp-7-webgl.jpg",
+      "alt": "jp-7",
+      "ratio": "1463x2048"
+    },
+    "img-jp-8-webgl": {
+      "src": "jp-8-webgl.jpg",
+      "alt": "jp-8",
+      "ratio": "1463x2048"
+    },
+    "img-jp-9-webgl": {
+      "src": "jp-9-webgl.jpg",
+      "alt": "jp-9",
+      "ratio": "1463x2048"
     }
   }
 }

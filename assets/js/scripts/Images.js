@@ -11,12 +11,10 @@ const OUT_PATH = "static/img/";
 const JSON_PATH = "data/en.json";
 const JSON_FILE = JSON.parse(fs.readFileSync(JSON_PATH, "utf8"));
 const SIZES = [
-    2400,
-    2000,
-    1600,
-    1200,
-    800,
-    400
+    2048,
+    1024,
+    512,
+    256
 ];
 
 let IN_PATH = "assets/img/";
@@ -106,19 +104,26 @@ const gcd = (x, y)=>{
 (()=>{
     getFiles(IN_PATH);
     for (const FILE of FILES) {
-        const cleanPath = `${OUT_PATH + cleanName(FILE)}`;
+        const fileName = cleanName(FILE);
         const format = formatOf(FILE);
         const {width, height} = size(FILE);
         const _gdc = gcd(width, height);
-        JSON_FILE.assets[getIdOf(cleanPath)] = {
-            src: `${OUT_RELATIVE_PATH}${cleanName(FILE)}.${format}`,
-            alt: cleanName(FILE),
+        JSON_FILE.assets[getIdOf(`img-${fileName}`)] = {
+            src: `${OUT_RELATIVE_PATH}${fileName}.${format}`,
+            alt: fileName,
+            ratio: `${width / _gdc}x${height / _gdc}`
+        };
+        JSON_FILE.assets[getIdOf(`img-${fileName}-webgl`)] = {
+            src: `${OUT_RELATIVE_PATH}${fileName}-webgl.${format}`,
+            alt: fileName,
             ratio: `${width / _gdc}x${height / _gdc}`
         };
         for (const SIZE of SIZES) {
-            const outPath = `${OUT_PATH + SIZE}/${OUT_RELATIVE_PATH}${cleanName(FILE)}.${format}`;
+            const outPath = `${OUT_PATH + SIZE}/${OUT_RELATIVE_PATH}${fileName}.${format}`;
+            const outPathWebGL = `${OUT_PATH + SIZE}/${OUT_RELATIVE_PATH}${fileName}-webgl.${format}`;
             createPathFor(outPath);
             QUEQUE.push(`convert ${FILE} -resize ${SIZE} ${outPath}`);
+            QUEQUE.push(`convert ${FILE} -resize ${SIZE}x${SIZE}\! ${outPathWebGL}`);
         }
     }
     convert();

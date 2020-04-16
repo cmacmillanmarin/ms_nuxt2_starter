@@ -10,8 +10,8 @@
 
 import {mapState} from "vuex";
 
-import VS from "~/assets/js/includes/glsl/wave/vs.glsl";
-import FS from "~/assets/js/includes/glsl/wave/fs.glsl";
+import VS from "~/assets/js/includes/glsl/webgl/vs.glsl";
+import FS from "~/assets/js/includes/glsl/webgl/fs.glsl";
 
 import MediaSource from "~/mixins/MediaSource";
 import ResizeHandler from "~/mixins/ResizeHandler";
@@ -21,7 +21,7 @@ export default {
     name: "WebGL",
     mixins: [LifecycleHooks, MediaSource, ResizeHandler],
     props: {
-        image: Object,
+        images: Array,
         effects: Array
     },
     computed: {
@@ -29,26 +29,52 @@ export default {
             vs: state=>state.viewportSize
         })
     },
+    data() {
+        return {
+            waves: false,
+            water: false,
+            slider: false
+        }
+    },
     watch: {
         effects() {
-            console.log(`Active Effects: ${this.effects}`);
+            this.waves = this.effects.indexOf("waves") >= 0;
+            this.water = this.effects.indexOf("water") >= 0;
+            this.slider = this.effects.indexOf("slider") >= 0;
+        },
+        waves() {
+            this.$core.tween({targets: this.plane.material.uniforms.waves, value: this.waves ? 1 : 0, easing: "o1", duration: 1000});
+        },
+        water() {},
+        slider() {
+            const eventType = this.slider ? "add" : "remove";
+            this.$core.tween({targets: this.plane.material.uniforms.slider, value: this.slider ? 1 : 0, easing: "o1", duration: 1000});
+            this.$core.events[`${eventType}EventListener`](this.$core.events.WHEEL, this.onWheel);
         }
     },
     methods: {
         async init() {
+            this._imgs = [];
+            this._index = 0;
             this._onMessage = this.onMessage.bind(this);
             this._loader = await this.$core.loader.get();
-            this._loader.worker.postMessage({index: this._loader.index, type: "img", src: this.getImageSourceFromObject(this.image, 500)});
+            this._loader.worker.postMessage({index: this._loader.index, type: "img", src: this.getImageSourceFromId(this.images[this._index], 500)});
             this._loader.worker.addEventListener("message", this._onMessage);
         },
         async onMessage(e) {
             const {src} = e.data;
-            this._img = new Image();
-            this._img.src = src;
-            await this._img.decode();
-            this.start();
+            const img = new Image();
+            img.src = src;
+            await img.decode();
+            this._imgs.push(img);
             URL.revokeObjectURL(src);
-            this._loader.worker.removeEventListener("message", this._onMessage);
+            if (this._imgs.length === this.images.length) {
+                this.start();
+                this._loader.worker.removeEventListener("message", this._onMessage);
+            } else {
+                this._index++;
+                this._loader.worker.postMessage({index: this._loader.index, type: "img", src: this.getImageSourceFromId(this.images[this._index], 500)});
+            }            
         },
         start() {
             const {
@@ -57,7 +83,8 @@ export default {
                 PerspectiveCamera,
                 Mesh,
                 Material,
-                PlaneBufferGeometry
+                PlaneBufferGeometry,
+                Vector3
             } = this.$core.webgl;
 
             this.scene = new Scene();
@@ -72,17 +99,19 @@ export default {
                     vertexShader: VS,
                     fragmentShader: FS,
                     uniforms: {
-                        img: {type: "t", value: this._img},
+                        imgA: {type: "t", value: this._imgs[0]},
+                        imgB: {type: "t", value: this._imgs[1]},
                         time: {type: "f", value: 0},
-                        progress: {type: "f", value: 0}
+                        waves: {type: "f", value: 0},
+                        slider: {type: "f", value: 0}
                     },
                     transparent: true
                 })
             );
-            const scale = {x: 1, y: 1};
+            const scale = 1.5; 
             const position = {x: 0, y: 0};
-            this.plane.scale.x = scale.x;
-            this.plane.scale.y = scale.y;
+            this.plane.scale.x = scale * 0.5; // Images are 5/7 ratio
+            this.plane.scale.y = scale * 0.7; // Images are 5/7 ratio
             // Position from screen to canvas available
             // const {x, y} = this.canvasPositionFrom(position, scale, this.vs);
             this.plane.position.x = 0;
@@ -92,7 +121,12 @@ export default {
 
             this.updateSize();
             this.$core.events.addEventListener(this.$core.events.RAF, this.render);
-            this.$core.tween({targets: this.plane.material.uniforms.progress, value: 1, easing: "o1", duration: 1500, delay: 500});
+        },
+        render(e) {
+            const {now} = e.params;
+            const time = now * 0.0015;
+            this.plane.material.uniforms.time.value = time;            
+            this.renderer.render(this.scene, this.camera);
         },
         updateSize() {
             const {w, h} = this.vs;
@@ -105,17 +139,16 @@ export default {
             const y = position.y - canvasSize.h * 0.5 + scale.y * 0.5;
             return {x, y};
         },
-        render(e) {
-            const {now} = e.params;
-            this.plane.material.uniforms.time.value = now * 0.0015;
-            this.renderer.render(this.scene, this.camera);
+        onWheel(e) {
+            console.log(e);
         },
         onResize() {
             this.updateSize();
         },
         removeListeners() {
-            this.$core.tween.remove(this.plane.material.uniforms.progress);
+            this.$core.tween.remove(this.plane.material.uniforms.waves);
             this.$core.events.removeEventListener(this.$core.events.RAF, this.render);
+            this.$core.events.removeEventListener(this.$core.events.WHEEL, this.onWheel);
         }
     }
 };
@@ -128,5 +161,6 @@ export default {
         left: 0;
         width: 100%;
         height: 100%;
+        background: chartreuse;
     }
 </style>

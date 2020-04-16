@@ -6,14 +6,14 @@
     <section class="page webgl">
         <nav>
             <ul>
-                <li v-for="effect of page.effects" :key="effect.id">
-                    <ada-button class="" @click.native="setAnimation(effect.id)">
-                    {{ effect.label }}
+                <li v-for="effect of page.effects" :key="effect">
+                    <ada-button class="" @click.native="setAnimation(effect)">
+                    {{ effect }}
                     </ada-button>
                 </li>
             </ul>
         </nav>
-        <web-g-l :image="$core.content.assets[page.images[0]]" :effects="effects" />
+        <web-g-l :images="page.images" :effects="effects" />
     </section>
 </template>
 

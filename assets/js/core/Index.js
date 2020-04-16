@@ -31,6 +31,10 @@ export default class Core {
     mount() {
         // Init
         console.log("%c👻 @cmacmillanmarin", "background: black; color: white; padding: 10px 20px");
+        
+        this.onWheelHandler = this.onWheel.bind(this);
+        window.addEventListener("mousewheel", this.onWheelHandler, {passive: false});
+
         requestAnimationFrame(this.raf.bind(this));
     }
 
